@@ -5,14 +5,22 @@ description: "Catatan rilis Mizukage Official Script Hub: fitur baru pada loader
 
 <Update label="16 Juni 2026">
 
-## Peluncuran dokumentasi resmi
+## Peluncuran Mizukage Official Script Hub
 
-Site dokumentasi Mizukage Official resmi dirilis. Mulai sekarang kamu bisa membaca panduan loader, daftar executor yang didukung, dan update mendatang lewat satu tempat.
+Rilis perdana Mizukage Official — loader Roblox dengan Water Aesthetic UI, dukungan multi-executor, dan dokumentasi resmi. Kamu sekarang bisa menjalankan hub lewat satu baris `loadstring` dan membaca panduan lengkap di [halaman utama](/).
 
 ### Fitur baru
 
-- **Quick start guide** — Snippet `loadstring` siap pakai di [halaman utama](/).
-- **Daftar executor** — Tabel kompatibilitas executor (Synapse Z, Fluxus, Delta, Hydrogen, Arceus X) dengan status dukungan masing-masing.
-- **Changelog** — Halaman ini akan terus diperbarui setiap ada rilis baru.
+- **Water Aesthetic loader** — UI dark dengan gradient cyan & purple, kanji logo 水 dengan animasi glow, dan progress bar bertahap saat loader berjalan.
+- **Multi-executor support** — Dukungan untuk Synapse Z, Fluxus, Delta, Hydrogen, dan Arceus X. Lihat tabel kompatibilitas di [Quick start](/#executor-yang-didukung).
+- **Anti double-execute** — Loader otomatis mendeteksi instance yang sudah berjalan, jadi UI tidak akan muncul dobel saat kamu menjalankan snippet dua kali.
+- **Executor check** — Validasi `HttpGet` dan `loadstring` sebelum eksekusi, dengan notifikasi jelas kalau executor kamu tidak kompatibel.
+- **Quick start snippet** — Satu baris `loadstring` siap pakai di [halaman utama](/) untuk langsung memuat hub di executor kamu.
+- **Dokumentasi resmi** — Site dokumentasi lengkap berisi panduan loader, daftar executor, dan halaman [Changelog](/changelog/overview) ini.
+
+### Update
+
+- **Auto cleanup** — GUI loader dan flag global dihapus otomatis setelah script utama selesai dimuat, supaya tidak meninggalkan sisa di memori executor.
+- **pcall protection** — Error pada script utama ditangkap dan ditampilkan sebagai notifikasi, bukan menggagalkan seluruh sesi loader.
 
 </Update>
