@@ -334,7 +334,7 @@ getgenv().MizukageLoaderActive = nil
 -- [8] EKSEKUSI SCRIPT UTAMA
 -- ══════════════════════════════════
 --  ▶  Ganti URL di bawah dengan link raw GitHub script utama kamu
-local MAIN_SCRIPT_URL = "https://raw.githubusercontent.com/NAMA_KAMU/mizukage/main/scripts/main.lua"
+local MAIN_SCRIPT_URL = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/script/main.lua"
 
 local ok, err = pcall(function()
     loadstring(game:HttpGet(MAIN_SCRIPT_URL, true))()
