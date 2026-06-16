@@ -16,6 +16,12 @@
       "pages": [
         "index"
       ]
+    },
+    {
+      "group": "Changelog",
+      "pages": [
+        "changelog/overview"
+      ]
     }
   ]
 }
