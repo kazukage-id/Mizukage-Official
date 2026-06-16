@@ -5,6 +5,25 @@ description: "Catatan rilis Mizukage Official Script Hub: fitur baru pada loader
 
 <Update label="16 Juni 2026">
 
+## Rekap mingguan — Script Lemon Sells v2
+
+Script per-game baru resmi tersedia di katalog Mizukage Official. Cocok dijalankan lewat Cloud Launcher v16.0 atau loader v2.0 di semua executor besar.
+
+### Fitur baru
+
+- **Lemon Sells v2 (Base Universal)** — Modul otomatisasi tycoon Lemon dengan tiga rutin utama: **Auto Buy** (membeli upgrade/tombol yang tersedia), **Auto Upgrade**, dan **Auto Fruit**. Sesi tetap berjalan di latar belakang tanpa GUI tambahan.
+- **Guard anti double-load** — Saat script sudah aktif, pemanggilan berikutnya menampilkan notifikasi *“Sistem Lemon sudah berjalan!”* sehingga sesi yang berjalan tidak tertimpa.
+- **Notifikasi tycoon tidak ditemukan** — Bila tycoon milik pemain belum tersedia di server, script memberi notifikasi jelas alih-alih gagal diam-diam.
+
+### Update
+
+- **Konfigurasi global lewat `MizuConfig`** — Status `Buy`, `Upgrade`, `Fruit`, dan `Delay` dapat diatur ulang dari sesi loader yang sama, memudahkan pengguna mengaktifkan/mematikan rutin tanpa menjalankan ulang snippet.
+- **Kompatibilitas executor** — Mengikuti dukungan loader v2.0; berjalan di Synapse Z, Fluxus, Delta, Hydrogen, dan Arceus X. Lihat daftar lengkap di [halaman utama](/).
+
+</Update>
+
+<Update label="16 Juni 2026">
+
 ## Rekap mingguan — Loader produksi resmi tayang
 
 Build produksi `loader.lua` kini diterbitkan ke kanal distribusi utama. Snippet `loadstring` di [halaman utama](/#eksekusi-utama) sudah mengarah ke build final yang telah diobfuscate, sehingga sesi loader siap dipakai langsung dari executor tanpa langkah tambahan.
