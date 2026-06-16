@@ -19,7 +19,7 @@
 Paste kode ini di executor kamu:
 
 ```lua
-loadstring(game:HttpGet("[https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/loader.lua)"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/loader.lua"))()
 ```
 
 ---
