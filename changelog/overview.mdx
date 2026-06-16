@@ -5,6 +5,34 @@ description: "Catatan rilis Mizukage Official Script Hub: fitur baru pada loader
 
 <Update label="16 Juni 2026">
 
+## Rekap mingguan — Katalog script & Cloud Launcher
+
+Minggu ini katalog Mizukage Official bertambah tujuh script per-game baru, sekaligus rilis pertama **Cloud Launcher v16.0** dan **Loader v2.0**. Semua snippet siap dipakai dari [halaman utama](/).
+
+### Fitur baru
+
+- **Tujuh script per-game baru** — **Brookhaven**, **Demonology**, **Evade**, **Flick (Murder Mystery 2)**, **Murder Mystery 2**, **Poop Game**, dan **Lemon Sells v2** kini aktif di katalog. Semuanya dimuat otomatis sesuai `PlaceId` lewat Cloud Launcher.
+- **Cloud Launcher v16.0 (Minimal Edition)** — Launcher tanpa GUI yang menarik database game dari kanal cloud resmi, mendukung **Auto-Execute setelah teleport** dan **Webhook Log eksekusi** ke Discord.
+- **Mizukage Official Loader v2.0** — Loader resmi dengan tema *Water-Aesthetic* berbasis WindUI, **Alternative loader URL**, **Webhook Log gratis**, serta **Auto Reconnect & Anti-AFK lanjutan**.
+- **Indikator progress bertahap & branding versi** — Status loading per langkah dan label `v2.0 • mizukage.vercel.app` di pojok loader untuk verifikasi kanal resmi.
+
+### Update
+
+- **Dukungan executor diperluas** — Semua snippet berjalan di Synapse Z, Fluxus, Delta, Hydrogen, dan Arceus X. Daftar lengkap di [halaman utama](/).
+- **Konfigurasi global lewat `MizuConfig`** — Semua script baru memakai konfigurasi yang sama, sehingga toggle dapat diatur ulang dari sesi loader yang sedang berjalan.
+- **Guard anti double-load** — Loader, launcher, dan setiap script per-game kini mendeteksi sesi aktif dan mencegah eksekusi ganda yang sering menyebabkan crash.
+- **Proteksi keamanan ditingkatkan** — Enkripsi dinamis, validasi HWID, dan proteksi Anti-Dump aktif secara default; build produksi `loader.lua` diterbitkan dalam bentuk teobfuscate.
+
+### Perbaikan bug
+
+- **Pembersihan katalog Brookhaven** — File Brookhaven duplikat dibersihkan dari kanal distribusi sehingga Cloud Launcher hanya memuat satu sumber resmi per game.
+- **Notifikasi executor tidak kompatibel** — Pengguna executor tanpa dukungan `HttpGet`/`loadstring` kini menerima pesan yang jelas, bukan gagal diam-diam.
+- **Konsistensi versi loader** — Snippet di dokumentasi dan build di kanal distribusi kini berasal dari sumber yang sama, sehingga tidak ada lagi selisih versi.
+
+</Update>
+
+<Update label="16 Juni 2026">
+
 ## Rekap mingguan — Script Brookhaven
 
 Script per-game baru **Brookhaven** resmi tersedia di katalog Mizukage Official. Fokus pada modul *trolling* dengan target pemain, lengkap dengan player tweaks dan tool misc standar. Berjalan otomatis lewat Cloud Launcher v16.0 atau loader v2.0 di executor besar (Synapse Z, Fluxus, Delta, Hydrogen, Arceus X).
