@@ -1,0 +1,31 @@
+{
+  "project": "Mizukage Official",
+  "version": "1.0.0",
+  "status": "stable",
+
+  "loader": {
+    "file": "loader.lua",
+    "raw": "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/main/loader.lua"
+  },
+
+  "scripts": {
+    "main": "scripts/main.lua"
+  },
+
+  "docs": {
+    "enabled": true,
+    "path": "docs/index.html",
+    "url": "https://kazukage-id.github.io/Mizukage-Official/"
+  },
+
+  "settings": {
+    "auto_update": true,
+    "debug": false,
+    "theme": "dark"
+  },
+
+  "author": {
+    "name": "kazukage-id",
+    "project": "Mizukage"
+  }
+}
