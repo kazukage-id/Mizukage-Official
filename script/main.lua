@@ -39,7 +39,7 @@ getgenv().MizuLauncherLoaded = true
 --========================================================================
 local CONFIG = {
     WEBHOOK_URL = "https://discord.com/api/webhooks/1516421004291997718/t5nSkmWsiwWFpSNHjJQv3fdQKWGm2SqOQag3LS3kSEwHL1QkuyfbgzFpLI7kDXO357Bj",
-    GITHUB_DB = "https://raw.githubusercontent.com/MikazuDbug/TeamMizu-HUB/refs/heads/main/GamesDatabase.lua",
+    GITHUB_DB = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/script/DBscript.lua",
     VERSION = "16.0",
     DELAY_BEFORE_EXECUTION = 1.5
 }
