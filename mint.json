@@ -1,6 +1,7 @@
 {
   "name": "Mizukage Official",
-  "theme": "mint",
+  "theme": "prism",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#00FFFF",
     "light": "#00FFFF",
@@ -15,12 +16,6 @@
       "group": "Informasi Utama",
       "pages": [
         "index"
-      ]
-    },
-    {
-      "group": "Changelog",
-      "pages": [
-        "changelog/overview"
       ]
     }
   ]
