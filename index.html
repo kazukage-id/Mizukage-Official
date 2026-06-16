@@ -1,963 +1,596 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mizukage Official — Script Hub Docs</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg:        #080b14;
-  --surface:   #0d1220;
-  --panel:     #111827;
-  --border:    #1e2d45;
-  --border2:   #243352;
-  --cyan:      #00e5ff;
-  --cyan-dim:  rgba(0,229,255,.12);
-  --purple:    #a855f7;
-  --purple-dim:rgba(168,85,247,.12);
-  --green:     #00e676;
-  --text:      #dce8ff;
-  --muted:     #5a6a88;
-  --muted2:    #8899bb;
-  --font-body: 'Space Grotesk', sans-serif;
-  --font-code: 'JetBrains Mono', monospace;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:15px}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--font-body);
-  min-height:100vh;
-  overflow-x:hidden;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Mizukage — Portofolio | Script & UI Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080b14;
+      --surface: #0d1220;
+      --panel: #111827;
+      --border: #1e2d45;
+      --border2: #243352;
+      --cyan: #00e5ff;
+      --cyan-dim: rgba(0,229,255,.12);
+      --purple: #a855f7;
+      --purple-dim: rgba(168,85,247,.12);
+      --green: #00e676;
+      --text: #dce8ff;
+      --muted: #5a6a88;
+      --muted2: #8899bb;
+      --font-body: 'Space Grotesk', sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:15px}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--font-body);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
 
-/* ── BG EFFECTS ── */
-#canvas-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
-.grid-overlay{
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(0,229,255,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,255,.03) 1px,transparent 1px);
-  background-size:48px 48px;
-}
-.radial-glow{
-  position:fixed;top:-200px;left:50%;transform:translateX(-50%);
-  width:900px;height:600px;
-  background:radial-gradient(ellipse,rgba(0,229,255,.06) 0%,transparent 70%);
-  z-index:0;pointer-events:none;
-}
+    /* ── BG EFFECTS ── */
+    #canvas-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .grid-overlay{
+      position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-image:
+        linear-gradient(rgba(0,229,255,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,229,255,.03) 1px,transparent 1px);
+      background-size:48px 48px;
+    }
+    .radial-glow{
+      position:fixed;top:-200px;left:50%;transform:translateX(-50%);
+      width:900px;height:600px;
+      background:radial-gradient(ellipse,rgba(0,229,255,.05) 0%,transparent 70%);
+      z-index:0;pointer-events:none;
+    }
 
-/* ── SIDEBAR ── */
-.sidebar{
-  position:fixed;top:0;left:0;
-  width:260px;height:100vh;
-  background:rgba(13,18,32,.92);
-  backdrop-filter:blur(20px);
-  border-right:1px solid var(--border);
-  z-index:100;
-  display:flex;flex-direction:column;
-  overflow:hidden;
-  transition:transform .3s ease;
-}
-.sidebar-logo{
-  display:flex;align-items:center;gap:14px;
-  padding:24px 22px 22px;
-  border-bottom:1px solid var(--border);
-  flex-shrink:0;
-}
-.logo-kanji{
-  width:44px;height:44px;border-radius:12px;
-  background:linear-gradient(135deg,var(--cyan),var(--purple));
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;font-weight:700;color:#000;
-  box-shadow:0 0 24px rgba(0,229,255,.3);
-  animation:logo-pulse 3s ease-in-out infinite;
-  flex-shrink:0;
-}
-@keyframes logo-pulse{
-  0%,100%{box-shadow:0 0 24px rgba(0,229,255,.3)}
-  50%{box-shadow:0 0 40px rgba(0,229,255,.55)}
-}
-.logo-info{}
-.logo-name{font-size:16px;font-weight:700;letter-spacing:-.3px}
-.logo-name span{color:var(--cyan)}
-.logo-ver{font-size:10px;color:var(--muted2);margin-top:2px}
+    /* ── SIDEBAR ── */
+    .sidebar{
+      position:fixed;top:0;left:0;
+      width:260px;height:100vh;
+      background:rgba(13,18,32,.92);
+      backdrop-filter:blur(20px);
+      border-right:1px solid var(--border);
+      z-index:100;
+      display:flex;flex-direction:column;
+      overflow:hidden;
+      transition:transform .3s ease;
+    }
+    .sidebar-logo{
+      display:flex;align-items:center;gap:14px;
+      padding:24px 22px 22px;
+      border-bottom:1px solid var(--border);
+      flex-shrink:0;
+    }
+    .logo-kanji{
+      width:44px;height:44px;border-radius:12px;
+      background:linear-gradient(135deg,var(--cyan),var(--purple));
+      display:flex;align-items:center;justify-content:center;
+      font-size:22px;font-weight:700;color:#000;
+      box-shadow:0 0 24px rgba(0,229,255,.3);
+      animation:logo-pulse 3s ease-in-out infinite;
+      flex-shrink:0;
+    }
+    @keyframes logo-pulse{
+      0%,100%{box-shadow:0 0 24px rgba(0,229,255,.3)}
+      50%{box-shadow:0 0 40px rgba(0,229,255,.55)}
+    }
+    .logo-name{font-size:16px;font-weight:700;letter-spacing:-.3px}
+    .logo-name span{color:var(--cyan)}
+    .logo-ver{font-size:10px;color:var(--muted2);margin-top:2px}
 
-.sidebar-nav{flex:1;overflow-y:auto;padding:18px 12px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
-.nav-group{margin-bottom:22px}
-.nav-group-label{
-  font-size:9.5px;font-weight:700;letter-spacing:2px;
-  text-transform:uppercase;color:var(--muted);
-  padding:0 10px;margin-bottom:6px;
-}
-.nav-item{
-  display:flex;align-items:center;gap:10px;
-  padding:8px 10px;border-radius:8px;
-  color:var(--muted2);text-decoration:none;font-size:13.5px;font-weight:500;
-  cursor:pointer;transition:all .18s;margin-bottom:2px;
-  position:relative;
-}
-.nav-item:hover,.nav-item.active{background:var(--cyan-dim);color:var(--text)}
-.nav-item.active{color:var(--cyan)}
-.nav-item.active::before{
-  content:'';position:absolute;left:0;top:20%;bottom:20%;
-  width:2px;border-radius:2px;
-  background:linear-gradient(to bottom,var(--cyan),var(--purple));
-}
-.nav-item .nav-icon{font-size:15px;width:20px;text-align:center;flex-shrink:0}
-.nav-badge{
-  margin-left:auto;font-size:9px;font-weight:700;
-  padding:2px 7px;border-radius:20px;letter-spacing:.5px;
-}
-.badge-new{background:rgba(0,230,118,.14);color:var(--green)}
-.badge-hot{background:rgba(168,85,247,.14);color:var(--purple)}
+    .sidebar-nav{flex:1;overflow-y:auto;padding:18px 12px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+    .nav-group{margin-bottom:22px}
+    .nav-group-label{
+      font-size:9.5px;font-weight:700;letter-spacing:2px;
+      text-transform:uppercase;color:var(--muted);
+      padding:0 10px;margin-bottom:6px;
+    }
+    .nav-item{
+      display:flex;align-items:center;gap:10px;
+      padding:8px 10px;border-radius:8px;
+      color:var(--muted2);text-decoration:none;font-size:13.5px;font-weight:500;
+      cursor:pointer;transition:all .18s;margin-bottom:2px;
+      position:relative;
+    }
+    .nav-item:hover,.nav-item.active{background:var(--cyan-dim);color:var(--text)}
+    .nav-item.active{color:var(--cyan)}
+    .nav-item.active::before{
+      content:'';position:absolute;left:0;top:20%;bottom:20%;
+      width:2px;border-radius:2px;
+      background:linear-gradient(to bottom,var(--cyan),var(--purple));
+    }
+    .nav-item .nav-icon{font-size:15px;width:20px;text-align:center;flex-shrink:0}
 
-.sidebar-footer{
-  padding:16px 22px;border-top:1px solid var(--border);
-  display:flex;align-items:center;gap:10px;flex-shrink:0;
-}
-.online-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--green);box-shadow:0 0 8px var(--green);
-  animation:blink 2.2s ease-in-out infinite;
-}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.sidebar-footer-txt{font-size:11px;color:var(--muted2)}
-.sidebar-footer-txt strong{color:var(--green);font-weight:600}
+    .sidebar-footer{
+      padding:16px 22px;border-top:1px solid var(--border);
+      display:flex;align-items:center;gap:10px;flex-shrink:0;
+    }
+    .online-dot{
+      width:7px;height:7px;border-radius:50%;
+      background:var(--green);box-shadow:0 0 8px var(--green);
+      animation:blink 2.2s ease-in-out infinite;
+    }
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .sidebar-footer-txt{font-size:11px;color:var(--muted2)}
+    .sidebar-footer-txt strong{color:var(--green);font-weight:600}
 
-/* ── TOPBAR ── */
-.topbar{
-  position:fixed;top:0;left:260px;right:0;height:58px;
-  background:rgba(8,11,20,.85);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;padding:0 30px;gap:14px;
-  z-index:90;
-}
-.search-box{
-  display:flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.04);border:1px solid var(--border);
-  border-radius:8px;padding:7px 14px;
-  flex:1;max-width:340px;transition:border-color .2s;
-}
-.search-box:focus-within{border-color:var(--cyan)}
-.search-box input{
-  background:none;border:none;outline:none;
-  color:var(--text);font-family:var(--font-body);font-size:13px;flex:1;
-}
-.search-box input::placeholder{color:var(--muted)}
-.search-icon{color:var(--muted);font-size:14px}
-.kbd{
-  font-size:10px;color:var(--muted);
-  background:rgba(255,255,255,.05);
-  border:1px solid var(--border);border-radius:4px;
-  padding:1px 6px;font-family:var(--font-code);
-}
-.topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px}
-.version-chip{
-  background:var(--cyan-dim);border:1px solid rgba(0,229,255,.25);
-  color:var(--cyan);font-size:11px;font-weight:700;
-  padding:4px 12px;border-radius:20px;letter-spacing:.5px;
-}
-.discord-btn{
-  display:flex;align-items:center;gap:7px;
-  background:rgba(88,101,242,.14);border:1px solid rgba(88,101,242,.3);
-  color:#7289da;font-size:12px;font-weight:600;
-  padding:6px 14px;border-radius:8px;text-decoration:none;
-  transition:all .2s;
-}
-.discord-btn:hover{background:rgba(88,101,242,.25)}
+    /* ── TOPBAR ── */
+    .topbar{
+      position:fixed;top:0;left:260px;right:0;height:58px;
+      background:rgba(8,11,20,.85);backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;padding:0 30px;gap:14px;
+      z-index:90;
+    }
+    .topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+    .version-chip{
+      background:var(--cyan-dim);border:1px solid rgba(0,229,255,.25);
+      color:var(--cyan);font-size:11px;font-weight:700;
+      padding:4px 12px;border-radius:20px;letter-spacing:.5px;
+    }
+    .discord-btn{
+      display:flex;align-items:center;gap:7px;
+      background:rgba(88,101,242,.14);border:1px solid rgba(88,101,242,.3);
+      color:#7289da;font-size:12px;font-weight:600;
+      padding:6px 14px;border-radius:8px;text-decoration:none;
+      transition:all .2s;
+    }
+    .discord-btn:hover{background:rgba(88,101,242,.25)}
 
-/* ── MAIN ── */
-.main{margin-left:260px;padding-top:58px;min-height:100vh;position:relative;z-index:1}
-.content{padding:52px 60px;max-width:860px}
+    /* ── MAIN ── */
+    .main{margin-left:260px;padding-top:58px;min-height:100vh;position:relative;z-index:1}
+    .content{padding:52px 60px;max-width:900px}
 
-/* ── HERO ── */
-.hero{margin-bottom:64px;opacity:0;animation:fadeUp .75s ease .05s forwards}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    /* ── HERO ── */
+    .hero{margin-bottom:64px;opacity:0;animation:fadeUp .75s ease .05s forwards}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:10px;font-weight:700;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--cyan);margin-bottom:18px;
-}
-.hero-eyebrow::before,.hero-eyebrow::after{
-  content:'';width:28px;height:1px;background:var(--cyan);opacity:.4;
-}
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      font-size:10px;font-weight:700;letter-spacing:2.5px;
+      text-transform:uppercase;color:var(--cyan);margin-bottom:18px;
+    }
+    .hero-eyebrow::before,.hero-eyebrow::after{
+      content:'';width:28px;height:1px;background:var(--cyan);opacity:.4;
+    }
+    .hero-title{
+      font-size:clamp(34px,5vw,54px);font-weight:700;
+      line-height:1.08;letter-spacing:-1.5px;margin-bottom:18px;
+    }
+    .grad-text{
+      background:linear-gradient(135deg,var(--cyan) 0%,var(--purple) 50%,#ff6b9d 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .hero-sub{
+      font-size:16px;color:var(--muted2);line-height:1.7;
+      max-width:520px;margin-bottom:32px;
+    }
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:11px 22px;border-radius:9px;font-size:13.5px;
+      font-weight:600;font-family:var(--font-body);cursor:pointer;
+      text-decoration:none;transition:all .2s;border:none;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--cyan),var(--purple));
+      color:#000;box-shadow:0 4px 22px rgba(0,229,255,.25);
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,229,255,.38)}
+    .btn-ghost{
+      background:rgba(255,255,255,.05);color:var(--text);
+      border:1px solid var(--border2);
+    }
+    .btn-ghost:hover{background:rgba(255,255,255,.09);border-color:var(--cyan)}
 
-.hero-title{
-  font-size:clamp(34px,5vw,54px);font-weight:700;
-  line-height:1.08;letter-spacing:-1.5px;margin-bottom:18px;
-}
-.grad-text{
-  background:linear-gradient(135deg,var(--cyan) 0%,var(--purple) 50%,#ff6b9d 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero-sub{
-  font-size:16px;color:var(--muted2);line-height:1.7;
-  max-width:520px;margin-bottom:32px;
-}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:11px 22px;border-radius:9px;font-size:13.5px;
-  font-weight:600;font-family:var(--font-body);cursor:pointer;
-  text-decoration:none;transition:all .2s;border:none;
-}
-.btn-primary{
-  background:linear-gradient(135deg,var(--cyan),var(--purple));
-  color:#000;box-shadow:0 4px 22px rgba(0,229,255,.25);
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,229,255,.38)}
-.btn-ghost{
-  background:rgba(255,255,255,.05);color:var(--text);
-  border:1px solid var(--border2);
-}
-.btn-ghost:hover{background:rgba(255,255,255,.09);border-color:var(--cyan)}
+    /* ── STATS ── */
+    .stats-row{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+      margin-bottom:56px;opacity:0;animation:fadeUp .75s ease .15s forwards;
+    }
+    .stat-card{
+      background:rgba(255,255,255,.025);border:1px solid var(--border);
+      border-radius:12px;padding:20px 22px;position:relative;overflow:hidden;
+      transition:all .22s;
+    }
+    .stat-card::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:1px;
+      background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+      opacity:0;transition:opacity .3s;
+    }
+    .stat-card:hover{transform:translateY(-3px);border-color:var(--border2)}
+    .stat-card:hover::before{opacity:1}
+    .stat-num{
+      font-family:var(--font-code);font-size:28px;font-weight:700;
+      background:linear-gradient(135deg,var(--text),var(--cyan));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      display:block;
+    }
+    .stat-lbl{font-size:11.5px;color:var(--muted);margin-top:4px}
 
-/* ── STATS ── */
-.stats-row{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-  margin-bottom:56px;opacity:0;animation:fadeUp .75s ease .15s forwards;
-}
-.stat-card{
-  background:rgba(255,255,255,.025);border:1px solid var(--border);
-  border-radius:12px;padding:20px 22px;position:relative;overflow:hidden;
-  transition:all .22s;
-}
-.stat-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
-  opacity:0;transition:opacity .3s;
-}
-.stat-card:hover{transform:translateY(-3px);border-color:var(--border2)}
-.stat-card:hover::before{opacity:1}
-.stat-num{
-  font-family:var(--font-code);font-size:28px;font-weight:700;
-  background:linear-gradient(135deg,var(--text),var(--cyan));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  display:block;
-}
-.stat-lbl{font-size:11.5px;color:var(--muted);margin-top:4px}
+    /* ── SECTION ── */
+    .doc-section{
+      margin-bottom:52px;
+      opacity:0;transform:translateY(18px);
+      transition:opacity .55s ease,transform .55s ease;
+    }
+    .doc-section.visible{opacity:1;transform:translateY(0)}
+    .section-head{margin-bottom:22px}
+    .section-title{
+      font-size:21px;font-weight:700;letter-spacing:-.4px;
+      display:flex;align-items:center;gap:12px;margin-bottom:8px;
+    }
+    .s-icon{
+      width:34px;height:34px;border-radius:9px;
+      display:flex;align-items:center;justify-content:center;font-size:17px;
+      flex-shrink:0;
+    }
+    .s-cyan{background:var(--cyan-dim)}
+    .s-purple{background:var(--purple-dim)}
+    .s-green{background:rgba(0,230,118,.1)}
+    .section-desc{font-size:13.5px;color:var(--muted2);line-height:1.7;max-width:640px}
 
-/* ── SECTION ── */
-.doc-section{
-  margin-bottom:52px;
-  opacity:0;transform:translateY(18px);
-  transition:opacity .55s ease,transform .55s ease;
-}
-.doc-section.visible{opacity:1;transform:translateY(0)}
+    /* ── PROJECT CARDS ── */
+    .project-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+    .project-card{
+      background:rgba(255,255,255,.025);border:1px solid var(--border);
+      border-radius:14px;overflow:hidden;transition:all .22s;
+      display:flex;flex-direction:column;
+    }
+    .project-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.4)}
+    .project-img{
+      height:140px;background:var(--panel);
+      display:flex;align-items:center;justify-content:center;
+      font-size:38px;border-bottom:1px solid var(--border);
+      position:relative;overflow:hidden;
+    }
+    .project-img::after{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(circle at 30% 20%,rgba(0,229,255,.08),transparent 70%);
+    }
+    .project-body{padding:18px}
+    .project-title{font-size:15px;font-weight:600;margin-bottom:4px}
+    .project-desc{font-size:12.5px;color:var(--muted2);line-height:1.6;margin-bottom:12px}
+    .tag-row{display:flex;gap:6px;flex-wrap:wrap}
+    .tag{
+      display:inline-block;padding:2px 9px;border-radius:20px;
+      font-size:10.5px;font-weight:700;
+    }
+    .tag-c{background:var(--cyan-dim);color:var(--cyan)}
+    .tag-g{background:rgba(0,230,118,.12);color:var(--green)}
+    .tag-p{background:var(--purple-dim);color:var(--purple)}
 
-.section-head{margin-bottom:22px}
-.section-title{
-  font-size:21px;font-weight:700;letter-spacing:-.4px;
-  display:flex;align-items:center;gap:12px;margin-bottom:8px;
-}
-.s-icon{
-  width:34px;height:34px;border-radius:9px;
-  display:flex;align-items:center;justify-content:center;font-size:17px;
-  flex-shrink:0;
-}
-.s-cyan{background:var(--cyan-dim)}
-.s-purple{background:var(--purple-dim)}
-.s-green{background:rgba(0,230,118,.1)}
-.section-desc{font-size:13.5px;color:var(--muted2);line-height:1.7;max-width:640px}
+    /* ── SKILL LIST ── */
+    .skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .skill-item{
+      display:flex;align-items:center;gap:12px;
+      background:rgba(255,255,255,.02);border:1px solid var(--border);
+      border-radius:10px;padding:12px 16px;
+    }
+    .skill-icon{font-size:20px;width:28px;text-align:center}
+    .skill-name{font-size:13.5px;font-weight:500;flex:1}
+    .skill-bar{
+      width:70px;height:4px;background:var(--border);
+      border-radius:4px;overflow:hidden;
+    }
+    .skill-fill{height:100%;border-radius:4px;width:0%;transition:width 1s ease}
+    .fill-c{background:linear-gradient(90deg,var(--cyan),var(--purple))}
 
-/* ── CODE BLOCK ── */
-.code-block{
-  background:#050810;border:1px solid var(--border);
-  border-radius:12px;overflow:hidden;margin:18px 0;
-  box-shadow:0 8px 36px rgba(0,0,0,.5);
-  transition:border-color .2s;
-}
-.code-block:hover{border-color:rgba(0,229,255,.3)}
-.code-header{
-  display:flex;align-items:center;gap:10px;
-  padding:11px 16px;
-  background:rgba(255,255,255,.025);
-  border-bottom:1px solid var(--border);
-}
-.traffic{display:flex;gap:6px}
-.traffic span{width:10px;height:10px;border-radius:50%}
-.t-r{background:#ff5f57}.t-y{background:#febc2e}.t-g{background:#28c840}
-.code-lang{
-  font-size:10px;font-weight:700;letter-spacing:1.5px;
-  text-transform:uppercase;color:var(--muted);margin-left:2px;
-}
-.copy-btn{
-  margin-left:auto;background:var(--cyan-dim);
-  border:1px solid rgba(0,229,255,.22);color:var(--cyan);
-  font-size:10.5px;font-weight:700;padding:4px 12px;
-  border-radius:6px;cursor:pointer;font-family:var(--font-body);
-  transition:all .18s;letter-spacing:.3px;
-}
-.copy-btn:hover{background:rgba(0,229,255,.2)}
-.copy-btn.ok{color:var(--green);border-color:var(--green);background:rgba(0,230,118,.1)}
-.code-body{
-  padding:20px 22px;font-family:var(--font-code);
-  font-size:13px;line-height:1.85;overflow-x:auto;
-  white-space:pre;
-}
-/* syntax colours */
-.kw {color:#c792ea} .fn{color:#82aaff} .st{color:#c3e88d}
-.cm{color:#3d5066;font-style:italic} .nu{color:#f78c6c}
-.op{color:#89ddff} .cy{color:#00e5ff} .pu{color:#a855f7}
+    /* ── DIVIDER ── */
+    .divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+    .glow-divider{
+      height:1px;margin:48px 0;
+      background:linear-gradient(90deg,transparent,var(--cyan),var(--purple),transparent);
+      opacity:.3;
+    }
 
-/* ── ALERT ── */
-.alert{
-  display:flex;gap:14px;padding:15px 18px;
-  border-radius:10px;margin:16px 0;font-size:13.5px;line-height:1.65;
-}
-.a-info{background:rgba(0,229,255,.07);border-left:3px solid var(--cyan)}
-.a-ok  {background:rgba(0,230,118,.07);border-left:3px solid var(--green)}
-.a-warn{background:rgba(251,191,36,.07);border-left:3px solid #fbbf24}
-.a-err {background:rgba(255,80,80,.07) ;border-left:3px solid #ff5050}
-.alert-ico{font-size:17px;flex-shrink:0;margin-top:1px}
-.alert-body{color:var(--text)}
-.alert-body strong{display:block;margin-bottom:3px;font-size:13px}
+    /* ── MOBILE ── */
+    .ham{
+      display:none;position:fixed;top:13px;left:13px;z-index:200;
+      background:var(--panel);border:1px solid var(--border);
+      border-radius:8px;padding:9px;cursor:pointer;flex-direction:column;gap:5px;
+    }
+    .ham span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+    @media(max-width:768px){
+      .ham{display:flex}
+      .sidebar{transform:translateX(-100%)}
+      .sidebar.open{transform:translateX(0)}
+      .topbar{left:0;padding:0 14px}
+      .main{margin-left:0}
+      .content{padding:28px 18px}
+      .stats-row{grid-template-columns:1fr}
+      .project-grid,.skill-grid{grid-template-columns:1fr}
+    }
 
-/* ── TABLE ── */
-.tbl-wrap{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:18px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{
-  background:rgba(255,255,255,.03);padding:11px 16px;text-align:left;
-  font-size:10px;font-weight:700;letter-spacing:1.2px;
-  text-transform:uppercase;color:var(--muted);
-  border-bottom:1px solid var(--border);
-}
-td{padding:11px 16px;border-bottom:1px solid rgba(30,45,69,.5);vertical-align:middle}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:rgba(0,229,255,.03)}
-.tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10.5px;font-weight:700}
-.tag-c{background:var(--cyan-dim);color:var(--cyan)}
-.tag-g{background:rgba(0,230,118,.12);color:var(--green)}
-.tag-p{background:var(--purple-dim);color:var(--purple)}
-.tag-y{background:rgba(251,191,36,.12);color:#fbbf24}
-
-/* ── FEATURE CARDS ── */
-.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
-.feat-card{
-  background:rgba(255,255,255,.025);border:1px solid var(--border);
-  border-radius:12px;padding:20px;transition:all .22s;
-  position:relative;overflow:hidden;
-}
-.feat-card::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 50% -10%,rgba(0,229,255,.07),transparent 65%);
-  opacity:0;transition:opacity .3s;
-}
-.feat-card:hover{border-color:var(--border2);transform:translateY(-3px)}
-.feat-card:hover::after{opacity:1}
-.feat-icon{font-size:26px;margin-bottom:12px;display:block}
-.feat-title{font-size:14px;font-weight:600;margin-bottom:6px}
-.feat-desc{font-size:12px;color:var(--muted2);line-height:1.65}
-
-/* ── STEP LIST ── */
-.step-list{margin-top:18px;display:flex;flex-direction:column;gap:14px}
-.step{
-  display:flex;gap:16px;align-items:flex-start;
-  background:rgba(255,255,255,.025);border:1px solid var(--border);
-  border-radius:10px;padding:16px 18px;transition:border-color .2s;
-}
-.step:hover{border-color:var(--border2)}
-.step-num{
-  width:30px;height:30px;border-radius:8px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--cyan),var(--purple));
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:700;color:#000;
-}
-.step-content{}
-.step-title{font-size:14px;font-weight:600;margin-bottom:4px}
-.step-desc{font-size:12.5px;color:var(--muted2);line-height:1.6}
-
-/* ── DIVIDER ── */
-.divider{border:none;border-top:1px solid var(--border);margin:48px 0}
-.glow-divider{
-  height:1px;margin:48px 0;
-  background:linear-gradient(90deg,transparent,var(--cyan),var(--purple),transparent);
-  opacity:.3;
-}
-
-/* ── MOBILE ── */
-.ham{
-  display:none;position:fixed;top:13px;left:13px;z-index:200;
-  background:var(--panel);border:1px solid var(--border);
-  border-radius:8px;padding:9px;cursor:pointer;flex-direction:column;gap:5px;
-}
-.ham span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
-@media(max-width:768px){
-  .ham{display:flex}
-  .sidebar{transform:translateX(-100%)}
-  .sidebar.open{transform:translateX(0)}
-  .topbar{left:0;padding:0 14px}
-  .main{margin-left:0}
-  .content{padding:28px 18px}
-  .stats-row{grid-template-columns:1fr}
-  .feat-grid{grid-template-columns:1fr}
-}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:var(--border2)}
-
-/* inline code */
-code{
-  font-family:var(--font-code);font-size:12px;
-  background:rgba(0,229,255,.07);color:var(--cyan);
-  padding:1px 6px;border-radius:4px;
-}
-</style>
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--border2)}
+  </style>
 </head>
 <body>
 
-<canvas id="canvas-bg"></canvas>
-<div class="grid-overlay"></div>
-<div class="radial-glow"></div>
+  <canvas id="canvas-bg"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="radial-glow"></div>
 
-<!-- Hamburger -->
-<button class="ham" id="ham" aria-label="Menu">
-  <span></span><span></span><span></span>
-</button>
+  <button class="ham" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 
-<!-- ══ SIDEBAR ══ -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo">
-    <div class="logo-kanji">水</div>
-    <div class="logo-info">
-      <div class="logo-name"><span>Mizukage</span> Official</div>
-      <div class="logo-ver">Script Hub • v2.1.0</div>
-    </div>
-  </div>
-
-  <nav class="sidebar-nav">
-    <div class="nav-group">
-      <div class="nav-group-label">Memulai</div>
-      <a class="nav-item active" href="#quickstart"><span class="nav-icon">⚡</span> Quick Start</a>
-      <a class="nav-item" href="#loader"><span class="nav-icon">📥</span> Loader Script</a>
-      <a class="nav-item" href="#struktur"><span class="nav-icon">📁</span> Struktur File</a>
-    </div>
-    <div class="nav-group">
-      <div class="nav-group-label">Fitur</div>
-      <a class="nav-item" href="#ui"><span class="nav-icon">🎨</span> UI Overview <span class="nav-badge badge-new">NEW</span></a>
-      <a class="nav-item" href="#animasi"><span class="nav-icon">✨</span> Animasi Loader</a>
-      <a class="nav-item" href="#keamanan"><span class="nav-icon">🔒</span> Sistem Keamanan</a>
-    </div>
-    <div class="nav-group">
-      <div class="nav-group-label">Konfigurasi</div>
-      <a class="nav-item" href="#config"><span class="nav-icon">⚙️</span> Konfigurasi <span class="nav-badge badge-hot">HOT</span></a>
-      <a class="nav-item" href="#executor"><span class="nav-icon">🛡️</span> Executor</a>
-      <a class="nav-item" href="#deploy"><span class="nav-icon">🚀</span> Deploy GitHub</a>
-    </div>
-    <div class="nav-group">
-      <div class="nav-group-label">Referensi</div>
-      <a class="nav-item" href="#faq"><span class="nav-icon">❓</span> FAQ</a>
-      <a class="nav-item" href="#changelog"><span class="nav-icon">📋</span> Changelog</a>
-    </div>
-  </nav>
-
-  <div class="sidebar-footer">
-    <div class="online-dot"></div>
-    <div class="sidebar-footer-txt">Server <strong>Online</strong> • 99.9% uptime</div>
-  </div>
-</aside>
-
-<!-- ══ TOPBAR ══ -->
-<header class="topbar">
-  <div class="search-box">
-    <span class="search-icon">🔍</span>
-    <input type="text" placeholder="Cari dokumentasi...">
-    <span class="kbd">⌘K</span>
-  </div>
-  <div class="topbar-right">
-    <div class="version-chip">v2.1.0</div>
-    <a class="discord-btn" href="#"><span>💬</span> Discord</a>
-  </div>
-</header>
-
-<!-- ══ MAIN ══ -->
-<main class="main">
-<div class="content">
-
-  <!-- HERO -->
-  <section class="hero" id="quickstart">
-    <div class="hero-eyebrow">Dokumentasi Resmi</div>
-    <h1 class="hero-title">
-      <span class="grad-text">Mizukage</span><br>Script Hub
-    </h1>
-    <p class="hero-sub">
-      Loader premium dengan animasi water-aesthetic, sistem keamanan anti-double-execute,
-      dan arsitektur modular siap deploy ke GitHub Pages.
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#loader">⚡ Lihat Loader</a>
-      <a class="btn btn-ghost" href="#deploy">🚀 Deploy Sekarang</a>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats-row">
-    <div class="stat-card">
-      <span class="stat-num" data-to="3">0</span>
-      <div class="stat-lbl">File Siap Pakai</div>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num" data-to="5">0</span>
-      <div class="stat-lbl">Executor Didukung</div>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num" data-to="99">0</span>
-      <div class="stat-lbl">Uptime %</div>
-    </div>
-  </div>
-
-  <div class="glow-divider"></div>
-
-  <!-- LOADER SCRIPT -->
-  <section class="doc-section" id="loader">
-    <div class="section-head">
-      <div class="section-title">
-        <div class="s-icon s-cyan">📥</div>
-        Loader Script — Cara Pakai
-      </div>
-      <p class="section-desc">
-        Copy satu baris ini ke executor kamu. Loader akan tampil otomatis dengan animasi
-        water-aesthetic, lalu mengeksekusi script utama kamu.
-      </p>
-    </div>
-
-    <div class="alert a-info">
-      <div class="alert-ico">ℹ️</div>
-      <div class="alert-body">
-        <strong>Pastikan executor mendukung HttpGet</strong>
-        Loader menggunakan <code>game:HttpGet()</code> untuk mengambil script dari GitHub.
-        Cek bagian <a href="#executor" style="color:var(--cyan)">Executor</a> untuk daftar yang didukung.
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-kanji">水</div>
+      <div class="logo-info">
+        <div class="logo-name"><span>Mizukage</span></div>
+        <div class="logo-ver">Portofolio • v2.1.0</div>
       </div>
     </div>
 
-    <div class="code-block">
-      <div class="code-header">
-        <div class="traffic"><span class="t-r"></span><span class="t-y"></span><span class="t-g"></span></div>
-        <span class="code-lang">Lua — Execute di Executor</span>
-        <button class="copy-btn" data-copy='loadstring(game:HttpGet("https://raw.githubusercontent.com/NAMA_KAMU/mizukage/main/loader.lua"))()'>Copy</button>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label">Navigasi</div>
+        <a class="nav-item active" href="#tentang"><span class="nav-icon">🧑‍💻</span> Tentang Saya</a>
+        <a class="nav-item" href="#karya"><span class="nav-icon">✨</span> Karya Unggulan</a>
+        <a class="nav-item" href="#skill"><span class="nav-icon">⚡</span> Keahlian</a>
       </div>
-      <div class="code-body"><span class="fn">loadstring</span><span class="op">(</span><span class="fn">game</span><span class="op">:</span><span class="fn">HttpGet</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/NAMA_KAMU/mizukage/main/loader.lua"</span><span class="op">))()</span></div>
-    </div>
-
-    <div class="alert a-ok">
-      <div class="alert-ico">✅</div>
-      <div class="alert-body">
-        <strong>Berhasil!</strong>
-        Animasi loader Mizukage akan muncul selama ~4 detik, lalu script utama berjalan otomatis.
+      <div class="nav-group">
+        <div class="nav-group-label">Kontak</div>
+        <a class="nav-item" href="#kontak"><span class="nav-icon">💬</span> Hubungi Saya</a>
+        <a class="nav-item" href="#testimoni"><span class="nav-icon">⭐</span> Testimoni</a>
       </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="online-dot"></div>
+      <div class="sidebar-footer-txt">Status <strong>Tersedia</strong> untuk proyek</div>
     </div>
-  </section>
+  </aside>
 
-  <hr class="divider">
-
-  <!-- ANIMASI LOADER -->
-  <section class="doc-section" id="animasi">
-    <div class="section-head">
-      <div class="section-title">
-        <div class="s-icon s-purple">✨</div>
-        Urutan Animasi Loader
-      </div>
-      <p class="section-desc">Loader melewati 8 fase animasi dari muncul hingga menghilang sebelum script dieksekusi.</p>
+  <!-- ══ TOPBAR ══ -->
+  <header class="topbar">
+    <div class="topbar-right">
+      <div class="version-chip">Portofolio v2.1</div>
+      <a class="discord-btn" href="#"><span>💬</span> Discord</a>
     </div>
+  </header>
 
-    <div class="step-list">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <div class="step-title">Overlay Fade-In</div>
-          <div class="step-desc">Layar ditutupi overlay semi-transparan gelap. Durasi 0.5 detik.</div>
+  <!-- ══ MAIN ══ -->
+  <main class="main">
+    <div class="content">
+
+      <!-- HERO -->
+      <section class="hero" id="tentang">
+        <div class="hero-eyebrow">UI/UX Scripter & Designer</div>
+        <h1 class="hero-title">
+          <span class="grad-text">Mizukage</span><br>Portofolio
+        </h1>
+        <p class="hero-sub">
+          Saya merancang antarmuka loader game dan sistem script modular dengan estetika water-aesthetic. 
+          Fokus pada animasi halus, kode bersih, dan pengalaman pengguna premium.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#karya">✨ Lihat Karya</a>
+          <a class="btn btn-ghost" href="#kontak">📩 Hubungi</a>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <span class="stat-num" data-to="12">0</span>
+          <div class="stat-lbl">Proyek Selesai</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" data-to="8">0</span>
+          <div class="stat-lbl">Klien Puas</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" data-to="3">0</span>
+          <div class="stat-lbl">Tahun Pengalaman</div>
         </div>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <div class="step-title">Card Pop-In</div>
-          <div class="step-desc">Card loader muncul dengan animasi Back.Out dari titik tengah layar. Durasi 0.55 detik.</div>
+
+      <div class="glow-divider"></div>
+
+      <!-- KARYA UNGGULAN -->
+      <section class="doc-section" id="karya">
+        <div class="section-head">
+          <div class="section-title">
+            <div class="s-icon s-purple">✨</div>
+            Karya Unggulan
+          </div>
+          <p class="section-desc">Beberapa proyek terbaru yang menampilkan kemampuan scripting dan desain UI.</p>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <div class="step-title">Reveal Text & Bar</div>
-          <div class="step-desc">Logo kanji 水, judul, subtitle, dan progress bar fade-in berurutan.</div>
+
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-img">🌊</div>
+            <div class="project-body">
+              <div class="project-title">Mizukage Loader v2</div>
+              <div class="project-desc">Loader premium dengan animasi water ripple, progress bar gradien, dan sistem proteksi ganda.</div>
+              <div class="tag-row">
+                <span class="tag tag-c">Lua</span>
+                <span class="tag tag-p">UI/UX</span>
+                <span class="tag tag-g">Roblox</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-img">🛡️</div>
+            <div class="project-body">
+              <div class="project-title">Executor Security Panel</div>
+              <div class="project-desc">Dashboard keamanan real-time dengan deteksi anti-tamper dan logging aktivitas pengguna.</div>
+              <div class="tag-row">
+                <span class="tag tag-c">Lua</span>
+                <span class="tag tag-g">Security</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-img">🎨</div>
+            <div class="project-body">
+              <div class="project-title">UI Library Custom</div>
+              <div class="project-desc">Framework UI ringan dengan tema gelap, animasi transisi, dan komponen modular siap pakai.</div>
+              <div class="tag-row">
+                <span class="tag tag-p">UI Lib</span>
+                <span class="tag tag-c">Open Source</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-img">⚡</div>
+            <div class="project-body">
+              <div class="project-title">Script Hub Landing Page</div>
+              <div class="project-desc">Halaman dokumentasi interaktif dengan efek partikel dan navigasi responsif — seperti yang Anda lihat sekarang.</div>
+              <div class="tag-row">
+                <span class="tag tag-g">HTML/CSS</span>
+                <span class="tag tag-c">JS</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <div class="step-title">Pulse Loop</div>
-          <div class="step-desc">Glow di belakang logo berdenyut terus selama proses loading berjalan.</div>
+      </section>
+
+      <hr class="divider">
+
+      <!-- KEAHLIAN -->
+      <section class="doc-section" id="skill">
+        <div class="section-head">
+          <div class="section-title">
+            <div class="s-icon s-cyan">⚡</div>
+            Keahlian Teknis
+          </div>
+          <p class="section-desc">Teknologi dan alat yang saya gunakan sehari-hari untuk membangun proyek.</p>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-content">
-          <div class="step-title">Loading Steps (×4)</div>
-          <div class="step-desc">Status text berganti dengan fade, progress bar meningkat: 20% → 40% → 60% → 85% → 100%.</div>
+
+        <div class="skill-grid">
+          <div class="skill-item">
+            <span class="skill-icon">📜</span>
+            <span class="skill-name">Lua / Luau</span>
+            <div class="skill-bar"><div class="skill-fill fill-c" data-width="95"></div></div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon">🎨</span>
+            <span class="skill-name">UI/UX Design</span>
+            <div class="skill-bar"><div class="skill-fill fill-c" data-width="88"></div></div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon">🌐</span>
+            <span class="skill-name">HTML / CSS / JS</span>
+            <div class="skill-bar"><div class="skill-fill fill-c" data-width="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon">🔒</span>
+            <span class="skill-name">Anti-Cheat / Security</span>
+            <div class="skill-bar"><div class="skill-fill fill-c" data-width="72"></div></div>
+          </div>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">6</div>
-        <div class="step-content">
-          <div class="step-title">Flash Accent</div>
-          <div class="step-desc">Card berkilat cyan sesaat sebagai tanda loading selesai.</div>
+      </section>
+
+      <div class="glow-divider"></div>
+
+      <!-- TESTIMONI -->
+      <section class="doc-section" id="testimoni">
+        <div class="section-head">
+          <div class="section-title">
+            <div class="s-icon s-green">⭐</div>
+            Testimoni Klien
+          </div>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">7</div>
-        <div class="step-content">
-          <div class="step-title">Outro — Semua Fade-Out</div>
-          <div class="step-desc">Semua elemen menghilang, card mengecil kembali ke titik 0 dengan animasi Back.In.</div>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px">
+          <div style="background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:12px;padding:18px 20px;">
+            <div style="font-size:13px;color:var(--muted2);line-height:1.7;margin-bottom:8px;">"Mizukage mengerjakan loader script hub saya dengan sangat profesional. Animasi yang dibuat benar-benar halus dan kode sangat bersih. Sangat direkomendasikan!"</div>
+            <div style="font-weight:600;font-size:13px;">— Rizky, Script Hub Owner</div>
+          </div>
+          <div style="background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:12px;padding:18px 20px;">
+            <div style="font-size:13px;color:var(--muted2);line-height:1.7;margin-bottom:8px;">"Desain UI library-nya elegan dan mudah dikustomisasi. Respon cepat dan komunikasi sangat baik selama proses pengerjaan."</div>
+            <div style="font-weight:600;font-size:13px;">— Dewi, Game Developer</div>
+          </div>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">8</div>
-        <div class="step-content">
-          <div class="step-title">Eksekusi Script Utama</div>
-          <div class="step-desc">ScreenGui di-destroy lalu <code>loadstring(game:HttpGet(URL))()</code> dijalankan dalam <code>pcall</code>.</div>
+      </section>
+
+      <hr class="divider">
+
+      <!-- KONTAK -->
+      <section class="doc-section" id="kontak">
+        <div class="section-head">
+          <div class="section-title">
+            <div class="s-icon s-purple">💬</div>
+            Hubungi Saya
+          </div>
+          <p class="section-desc">Tertarik bekerja sama atau ingin custom script / UI? Jangan ragu untuk menghubungi.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- KEAMANAN -->
-  <section class="doc-section" id="keamanan">
-    <div class="section-head">
-      <div class="section-title">
-        <div class="s-icon s-green">🔒</div>
-        Sistem Keamanan Bawaan
-      </div>
-      <p class="section-desc">Loader sudah dilengkapi beberapa lapisan proteksi out-of-the-box.</p>
-    </div>
-
-    <div class="feat-grid">
-      <div class="feat-card">
-        <span class="feat-icon">🚫</span>
-        <div class="feat-title">Anti Double-Execute</div>
-        <div class="feat-desc">Flag <code>getgenv().MizukageLoaderActive</code> mencegah loader berjalan dua kali dalam satu sesi.</div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">🔍</span>
-        <div class="feat-title">Executor Check</div>
-        <div class="feat-desc">Verifikasi <code>game.HttpGet</code> dan <code>loadstring</code> tersedia sebelum loader berjalan.</div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">🛡️</span>
-        <div class="feat-title">pcall Protection</div>
-        <div class="feat-desc">Eksekusi script utama dibungkus <code>pcall</code> — error ditangkap dan ditampilkan sebagai notifikasi.</div>
-      </div>
-      <div class="feat-card">
-        <span class="feat-icon">🧹</span>
-        <div class="feat-title">Auto Cleanup</div>
-        <div class="feat-desc">ScreenGui dan flag global dihapus otomatis setelah loader selesai agar tidak ada memory leak.</div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- KONFIGURASI -->
-  <section class="doc-section" id="config">
-    <div class="section-head">
-      <div class="section-title">
-        <div class="s-icon s-cyan">⚙️</div>
-        Konfigurasi loader.lua
-      </div>
-      <p class="section-desc">Edit bagian ini di <code>loader.lua</code> untuk menyesuaikan dengan project kamu.</p>
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="traffic"><span class="t-r"></span><span class="t-y"></span><span class="t-g"></span></div>
-        <span class="code-lang">Lua — Variabel yang Perlu Diedit</span>
-        <button class="copy-btn" data-copy='local ACCENT    = Color3.fromRGB(0, 255, 255)
-local ACCENT2   = Color3.fromRGB(100, 80, 255)
-local MAIN_SCRIPT_URL = "https://raw.githubusercontent.com/NAMA_KAMU/mizukage/main/scripts/main.lua"'>Copy</button>
-      </div>
-      <div class="code-body"><span class="cm">-- ⬇️ EDIT BAGIAN INI SESUAI PROJECT KAMU</span>
-
-<span class="cm">-- Warna accent utama (default: Cyan)</span>
-<span class="kw">local</span> <span class="fn">ACCENT</span>    <span class="op">=</span> <span class="fn">Color3.fromRGB</span><span class="op">(</span><span class="nu">0</span><span class="op">,</span> <span class="nu">255</span><span class="op">,</span> <span class="nu">255</span><span class="op">)</span>
-
-<span class="cm">-- Warna accent kedua (default: Purple)</span>
-<span class="kw">local</span> <span class="fn">ACCENT2</span>   <span class="op">=</span> <span class="fn">Color3.fromRGB</span><span class="op">(</span><span class="nu">100</span><span class="op">,</span> <span class="nu">80</span><span class="op">,</span> <span class="nu">255</span><span class="op">)</span>
-
-<span class="cm">-- ⬇️ PALING PENTING: URL script utama kamu</span>
-<span class="kw">local</span> <span class="fn">MAIN_SCRIPT_URL</span> <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/NAMA_KAMU/mizukage/main/scripts/main.lua"</span></div>
-    </div>
-
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Variabel</th><th>Default</th><th>Keterangan</th></tr></thead>
-        <tbody>
-          <tr><td><code>ACCENT</code></td><td><span class="tag tag-c">Cyan</span></td><td>Warna utama UI (progress bar, teks judul)</td></tr>
-          <tr><td><code>ACCENT2</code></td><td><span class="tag tag-p">Purple</span></td><td>Warna gradient kedua</td></tr>
-          <tr><td><code>MAIN_SCRIPT_URL</code></td><td>—</td><td><strong>Wajib diisi</strong> — link raw GitHub script utama</td></tr>
-          <tr><td>Teks Logo</td><td><code>水</code></td><td>Ganti di bagian <code>Text = "水"</code> pada Logo label</td></tr>
-          <tr><td>Teks Judul</td><td>MIZUKAGE OFFICIAL</td><td>Ganti di bagian <code>Text = "MIZUKAGE OFFICIAL"</code></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- STRUKTUR FILE -->
-  <section class="doc-section" id="struktur">
-    <div class="section-head">
-      <div class="section-title">
-        <div class="s-icon s-purple">📁</div>
-        Struktur File GitHub
-      </div>
-      <p class="section-desc">Rekomendasi struktur repo agar loader bisa memanggil script utama dengan benar.</p>
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="traffic"><span class="t-r"></span><span class="t-y"></span><span class="t-g"></span></div>
-        <span class="code-lang">Folder Structure</span>
-      </div>
-      <div class="code-body"><span class="cy">mizukage/</span>          <span class="cm">← root repo GitHub kamu</span>
-<span class="op">├─</span> <span class="fn">loader.lua</span>        <span class="cm">← file ini yang dieksekusi user</span>
-<span class="op">├─</span> <span class="fn">README.md</span>         <span class="cm">← deskripsi repo</span>
-<span class="op">├─</span> <span class="cy">scripts/</span>
-<span class="op">│  ├─</span> <span class="fn">main.lua</span>       <span class="cm">← script utama hub kamu</span>
-<span class="op">│  ├─</span> <span class="fn">esp.lua</span>        <span class="cm">← contoh modul tambahan</span>
-<span class="op">│  └─</span> <span class="fn">aimbot.lua</span>     <span class="cm">← contoh modul tambahan</span>
-<span class="op">└─</span> <span class="cy">docs/</span>
-   <span class="op">├─</span> <span class="fn">index.html</span>      <span class="cm">← file ini (dokumentasi)</span>
-   <span class="op">└─</span> <span class="fn">assets/</span>        <span class="cm">← gambar / logo</span></div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- DEPLOY -->
-  <section class="doc-section" id="deploy">
-    <div class="section-head">
-      <div class="section-title">
-        <div class="s-icon s-green">🚀</div>
-        Deploy ke GitHub Pages
-      </div>
-      <p class="section-desc">Dokumentasi ini bisa langsung dihosting gratis di GitHub Pages dengan beberapa langkah.</p>
-    </div>
-
-    <div class="step-list">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <div class="step-title">Buat Repository Baru</div>
-          <div class="step-desc">Pergi ke github.com → New Repository → Nama: <code>mizukage</code> → Public → Create.</div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:18px">
+          <a class="btn btn-primary" href="#">💬 Discord — mizukage.dev</a>
+          <a class="btn btn-ghost" href="#">📧 Email — mizukage@portofolio.dev</a>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <div class="step-title">Upload Semua File</div>
-          <div class="step-desc">Upload <code>loader.lua</code>, folder <code>scripts/</code>, dan <code>docs/index.html</code> ke repo tersebut.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <div class="step-title">Aktifkan GitHub Pages</div>
-          <div class="step-desc">Settings → Pages → Source: <em>Deploy from branch</em> → Branch: <code>main</code> → Folder: <code>/docs</code> → Save.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <div class="step-title">Ganti NAMA_KAMU</div>
-          <div class="step-desc">Edit <code>loader.lua</code> — ganti semua <code>NAMA_KAMU</code> dengan username GitHub kamu, lalu commit.</div>
-        </div>
-      </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:16px;">* Respon biasanya dalam 1×24 jam. Sertakan detail proyek untuk diskusi lebih lanjut.</p>
+      </section>
+
     </div>
+  </main>
 
-    <div class="alert a-ok" style="margin-top:18px">
-      <div class="alert-ico">🎉</div>
-      <div class="alert-body">
-        <strong>Dokumentasi live di:</strong>
-        <code>https://NAMA_KAMU.github.io/mizukage/</code>
-        <br>Loader raw URL: <code>https://raw.githubusercontent.com/NAMA_KAMU/mizukage/main/loader.lua</code>
-      </div>
-    </div>
-  </section>
+  <script>
+    /* ── STARS ── */
+    const cv = document.getElementById('canvas-bg');
+    const cx = cv.getContext('2d');
+    let W,H,stars=[];
+    function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+    function mkStars(){stars=[];for(let i=0;i<180;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*.9+.2,o:Math.random(),s:Math.random()*.003+.001,d:Math.random()>.5?1:-1})}
+    function draw(){cx.clearRect(0,0,W,H);for(const s of stars){s.o+=s.s*s.d;if(s.o>=1||s.o<=0)s.d*=-1;cx.beginPath();cx.arc(s.x,s.y,s.r,0,Math.PI*2);cx.fillStyle=`rgba(160,200,255,${s.o})`;cx.fill()}requestAnimationFrame(draw)}
+    resize();mkStars();draw();
+    window.addEventListener('resize',()=>{resize();mkStars()});
 
-  <hr class="divider">
+    /* ── COUNTERS ── */
+    const cObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting)return;
+        e.target.querySelectorAll('[data-to]').forEach(el=>{
+          const target=+el.dataset.to;
+          let cur=0;const step=target/55;
+          const id=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=Math.floor(cur)+(target>=99?'%':'+');if(cur>=target)clearInterval(id)},16);
+        });
+        cObs.unobserve(e.target);
+      });
+    },{threshold:.3});
+    document.querySelectorAll('.stats-row').forEach(el=>cObs.observe(el));
 
-  <!-- EXECUTOR -->
-  <section class="doc-section" id="executor">
-    <div class="section-head">
-      <div class="section-title">
-        <div class="s-icon s-cyan">🛡️</div>
-        Executor yang Didukung
-      </div>
-      <p class="section-desc">Loader diuji pada executor berikut. Kolom kritis: harus mendukung HttpGet dan loadstring.</p>
-    </div>
+    /* ── SKILL BARS ── */
+    const skillObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting)return;
+        e.target.querySelectorAll('.skill-fill').forEach(bar=>{
+          bar.style.width=bar.dataset.width+'%';
+        });
+        skillObs.unobserve(e.target);
+      });
+    },{threshold:.3});
+    document.querySelectorAll('.skill-grid').forEach(el=>skillObs.observe(el));
 
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Executor</th><th>Platform</th><th>HttpGet</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Synapse Z</strong></td><td>PC</td><td><span class="tag tag-g">✓</span></td><td><span class="tag tag-g">Full Support</span></td></tr>
-          <tr><td><strong>Fluxus</strong></td><td>PC / Android</td><td><span class="tag tag-g">✓</span></td><td><span class="tag tag-g">Full Support</span></td></tr>
-          <tr><td><strong>Delta</strong></td><td>Android</td><td><span class="tag tag-g">✓</span></td><td><span class="tag tag-c">Supported</span></td></tr>
-          <tr><td><strong>Hydrogen</strong></td><td>iOS / Android</td><td><span class="tag tag-g">✓</span></td><td><span class="tag tag-c">Supported</span></td></tr>
-          <tr><td><strong>Arceus X</strong></td><td>Android</td><td><span class="tag tag-y">~</span></td><td><span class="tag tag-p">Partial</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+    /* ── SECTION REVEAL ── */
+    const sObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+    },{threshold:.08});
+    document.querySelectorAll('.doc-section').forEach(el=>sObs.observe(el));
 
-  <hr class="divider">
+    /* ── ACTIVE NAV ── */
+    const navLinks=document.querySelectorAll('.nav-item');
+    navLinks.forEach(l=>l.addEventListener('click',function(){navLinks.forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
 
-  <!-- FAQ -->
-  <section class="doc-section" id="faq">
-    <div class="section-head">
-      <div class="section-title">
-        <div class="s-icon s-purple">❓</div>
-        FAQ
-      </div>
-    </div>
-
-    <div class="step-list">
-      <div class="step">
-        <div class="step-num">Q</div>
-        <div class="step-content">
-          <div class="step-title">Loader tidak muncul sama sekali?</div>
-          <div class="step-desc">Pastikan executor kamu mendukung <code>game:HttpGet()</code>. Cek error di console executor dengan melihat output <code>warn()</code>.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">Q</div>
-        <div class="step-content">
-          <div class="step-title">Notifikasi "Gagal memuat script utama" muncul?</div>
-          <div class="step-desc">Berarti <code>MAIN_SCRIPT_URL</code> di <code>loader.lua</code> belum diisi atau URL salah. Pastikan link raw GitHub benar dan repo public.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">Q</div>
-        <div class="step-content">
-          <div class="step-title">Cara ganti warna loader?</div>
-          <div class="step-desc">Edit variabel <code>ACCENT</code> dan <code>ACCENT2</code> di bagian [2] file <code>loader.lua</code> menggunakan <code>Color3.fromRGB(R, G, B)</code>.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">Q</div>
-        <div class="step-content">
-          <div class="step-title">Loader muncul dua kali setelah rejoin?</div>
-          <div class="step-desc">Normal — flag <code>getgenv()</code> direset saat rejoin. Loader hanya dicegah dobel dalam <em>satu sesi</em> tanpa rejoin.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- CHANGELOG -->
-  <section class="doc-section" id="changelog">
-    <div class="section-head">
-      <div class="section-title">
-        <div class="s-icon s-green">📋</div>
-        Changelog
-      </div>
-    </div>
-
-    <div class="alert a-ok">
-      <div class="alert-ico">🆕</div>
-      <div class="alert-body">
-        <strong>v2.1.0 — Juni 2026</strong>
-        Struktur script utama dirapikan: <code>main.lua</code> kini berada di folder <code>script/</code>. Loader otomatis mengarah ke path baru — tidak ada perubahan cara pakai untuk user akhir. Lihat <a href="#struktur">Struktur File</a>.
-      </div>
-    </div>
-    <div class="alert a-ok">
-      <div class="alert-ico">🆕</div>
-      <div class="alert-body">
-        <strong>v2.0.0 — Juni 2025</strong>
-        Redesign total UI loader. Tambah animasi glow pulse, flash accent, gradient progress bar, dan kanji logo. Tambah pcall protection dan auto cleanup.
-      </div>
-    </div>
-    <div class="alert a-info">
-      <div class="alert-ico">🔧</div>
-      <div class="alert-body">
-        <strong>v1.2.0 — April 2025</strong>
-        Perbaikan bug anti double-execute. Loader kini berjalan di CoreGui agar tidak ter-reset saat respawn.
-      </div>
-    </div>
-    <div class="alert a-warn">
-      <div class="alert-ico">📌</div>
-      <div class="alert-body">
-        <strong>v1.0.0 — Maret 2025</strong>
-        Rilis pertama loader dengan UI dasar dan progress bar sederhana.
-      </div>
-    </div>
-  </section>
-
-</div><!-- /content -->
-</main>
-
-<script>
-/* ── STARS ── */
-const cv = document.getElementById('canvas-bg');
-const cx = cv.getContext('2d');
-let W,H,stars=[];
-function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight}
-function mkStars(){stars=[];for(let i=0;i<180;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*.9+.2,o:Math.random(),s:Math.random()*.003+.001,d:Math.random()>.5?1:-1})}
-function draw(){cx.clearRect(0,0,W,H);for(const s of stars){s.o+=s.s*s.d;if(s.o>=1||s.o<=0)s.d*=-1;cx.beginPath();cx.arc(s.x,s.y,s.r,0,Math.PI*2);cx.fillStyle=`rgba(160,200,255,${s.o})`;cx.fill()}requestAnimationFrame(draw)}
-resize();mkStars();draw();
-window.addEventListener('resize',()=>{resize();mkStars()});
-
-/* ── COPY BUTTONS ── */
-document.querySelectorAll('.copy-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const txt = btn.dataset.copy || btn.closest('.code-block').querySelector('.code-body').innerText;
-    navigator.clipboard.writeText(txt.trim()).then(()=>{
-      const orig=btn.textContent;btn.textContent='✓ Copied!';btn.classList.add('ok');
-      setTimeout(()=>{btn.textContent=orig;btn.classList.remove('ok')},2200);
-    });
-  });
-});
-
-/* ── COUNTERS ── */
-const cObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    e.target.querySelectorAll('[data-to]').forEach(el=>{
-      const target=+el.dataset.to;
-      const sfx=target>=99?'%':'+';
-      let cur=0;const step=target/55;
-      const id=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=Math.floor(cur)+sfx;if(cur>=target)clearInterval(id)},16);
-    });
-    cObs.unobserve(e.target);
-  });
-},{threshold:.3});
-document.querySelectorAll('.stats-row').forEach(el=>cObs.observe(el));
-
-/* ── SECTION REVEAL ── */
-const sObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:.08});
-document.querySelectorAll('.doc-section').forEach(el=>sObs.observe(el));
-
-/* ── ACTIVE NAV ── */
-const navLinks=document.querySelectorAll('.nav-item');
-navLinks.forEach(l=>l.addEventListener('click',function(){navLinks.forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
-
-/* ── HAMBURGER ── */
-const ham=document.getElementById('ham');
-const sb=document.getElementById('sidebar');
-ham.addEventListener('click',()=>sb.classList.toggle('open'));
-document.addEventListener('click',e=>{if(sb.classList.contains('open')&&!sb.contains(e.target)&&e.target!==ham)sb.classList.remove('open')});
-</script>
+    /* ── HAMBURGER ── */
+    const ham=document.getElementById('ham');
+    const sb=document.getElementById('sidebar');
+    ham.addEventListener('click',()=>sb.classList.toggle('open'));
+    document.addEventListener('click',e=>{if(sb.classList.contains('open')&&!sb.contains(e.target)&&e.target!==ham)sb.classList.remove('open')});
+  </script>
 </body>
 </html>
