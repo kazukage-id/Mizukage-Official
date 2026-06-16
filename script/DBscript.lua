@@ -1,0 +1,103 @@
+--========================================================================
+-- MIZUKAGE OFFICIAL DATABASE - GAMES LIST (LENGKAP)
+--========================================================================
+
+-- GAME DENGAN PLACE ID VALID (AUTO DETECT)
+local ValidGames = {
+    [2753915549] = {
+        Name = "Blox Fruits - World 1",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/BF.lua"
+    },
+    [4442272183] = {
+        Name = "Blox Fruits - World 2",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/BF.lua"
+    },
+    [7449423635] = {
+        Name = "Blox Fruits - World 3",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/BF.lua"
+    },
+}
+
+-- GAME DENGAN PLACE ID BELUM DIKETAHUI (HANYA UNTUK TELEPORT MANUAL)
+local PendingGames = {
+    {
+        Name = "Aura Trade",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/AuraTrade.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Blade Ball",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Bladeball.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Brookhaven",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Brookhaven.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Demonology",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Demonlogy.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Evade",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/evade.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Flick",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/flick.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Indo Beach",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Indobeach.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Murder Mystery 2",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/MM2.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Poop Game",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/poopgame.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Sambung Kata",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sambung%20kata.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Sawah Indo",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sawah%20indo.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Sawit Garden",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sawit%20garden.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Tebak Yuk",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Tebakyuk.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Violence District",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/VD.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Sell Lemon",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/sell%20lemon.lua",
+        PlaceId = nil
+    },
+}
+
+return {
+    Valid = ValidGames,
+    Pending = PendingGames
+}
