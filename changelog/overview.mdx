@@ -5,6 +5,23 @@ description: "Catatan rilis Mizukage Official Script Hub: fitur baru pada loader
 
 <Update label="16 Juni 2026">
 
+## Rekap mingguan — Loader produksi resmi tayang
+
+Build produksi `loader.lua` kini diterbitkan ke kanal distribusi utama. Snippet `loadstring` di [halaman utama](/#eksekusi-utama) sudah mengarah ke build final yang telah diobfuscate, sehingga sesi loader siap dipakai langsung dari executor tanpa langkah tambahan.
+
+### Update
+
+- **Loader produksi diobfuscate** — Build resmi diterbitkan dengan proteksi obfuscation untuk mengurangi risiko *reverse engineering* dan duplikasi script tidak resmi.
+- **Kanal distribusi utama aktif** — `loader.lua` dapat diakses langsung melalui snippet `loadstring` di [Eksekusi utama](/#eksekusi-utama); kanal cadangan `scripts/main.lua` tetap tersedia bila kanal utama bermasalah.
+
+### Perbaikan bug
+
+- **Konsistensi versi loader** — Snippet di dokumentasi dan build di kanal distribusi kini berasal dari sumber yang sama, sehingga tidak ada lagi selisih versi antara contoh di dokumentasi dan loader yang dieksekusi.
+
+</Update>
+
+<Update label="16 Juni 2026">
+
 ## Cloud Launcher v16.0 — Auto-Execute & Webhook Log
 
 Mizukage Official Cloud Launcher v16.0 (Minimal Edition) resmi tersedia. Versi ini fokus pada eksekusi script per-game secara otomatis tanpa GUI, cocok dipasangkan dengan loader v2.0 untuk pengguna PC maupun mobile.
