@@ -5,6 +5,29 @@ description: "Catatan rilis Mizukage Official Script Hub: fitur baru pada loader
 
 <Update label="16 Juni 2026">
 
+## Cloud Launcher v16.0 — Auto-Execute & Webhook Log
+
+Mizukage Official Cloud Launcher v16.0 (Minimal Edition) resmi tersedia. Versi ini fokus pada eksekusi script per-game secara otomatis tanpa GUI, cocok dipasangkan dengan loader v2.0 untuk pengguna PC maupun mobile.
+
+### Fitur baru
+
+- **Cloud Launcher per-game** — Launcher kini menarik database game dari kanal cloud resmi dan otomatis memuat script yang sesuai dengan `PlaceId` aktif, jadi Anda tidak perlu mengganti snippet `loadstring` setiap pindah game.
+- **Auto-Execute setelah teleport** — Sesi launcher bertahan saat berpindah server atau game, sehingga script langsung berjalan kembali tanpa eksekusi ulang manual.
+- **Webhook Log eksekusi** — Setiap sesi launcher melaporkan status eksekusi ke Discord melalui webhook resmi, memudahkan pemantauan sesi aktif. Lihat snippet [Alternative URL](/#eksekusi-utama) untuk memakai endpoint cadangan saat kanal utama bermasalah.
+
+### Update
+
+- **Dukungan multi-executor diperluas** — Launcher otomatis mendeteksi fungsi `request` dari Synapse, Fluxus, Hydrogen, dan executor besar lain, sehingga snippet yang sama bekerja di semua executor yang didukung. Daftar lengkap di [halaman utama](/).
+- **Guard anti double-launch** — Sesi launcher aktif dilindungi dari pemanggilan ganda, mengurangi risiko crash saat snippet dipanggil dua kali berturut-turut.
+
+### Perbaikan bug
+
+- **Notifikasi executor tidak kompatibel** — Pengguna executor tanpa `HttpGet`/`loadstring` kini menerima pesan jelas dari launcher, bukan gagal diam-diam.
+
+</Update>
+
+<Update label="16 Juni 2026">
+
 ## Rekap mingguan — Pengalaman loading & branding baru
 
 Beberapa peningkatan kecil di sisi pengalaman pengguna ikut dirilis bersama loader v2.0 minggu ini.
