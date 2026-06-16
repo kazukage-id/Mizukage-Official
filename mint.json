@@ -1,0 +1,21 @@
+{
+  "name": "Mizukage Official",
+  "theme": "mint",
+  "colors": {
+    "primary": "#00FFFF",
+    "light": "#00FFFF",
+    "dark": "#00FFFF",
+    "background": {
+      "dark": "#0F0F0F",
+      "light": "#FFFFFF"
+    }
+  },
+  "navigation": [
+    {
+      "group": "Informasi Utama",
+      "pages": [
+        "index"
+      ]
+    }
+  ]
+}
