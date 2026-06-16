@@ -8,7 +8,7 @@
 
 **Premium Roblox Script Hub dengan Aesthetic Water UI Loader**
 
-[📖 Dokumentasi](https://mizukageofficial.mintlify.app/) • [💬 Discord](https://discord.gg/Mizukage-Official) • [🐛 Report Bug](../../issues)
+[📖 Dokumentasi](https://kazukage-id.github.io/Mizukage-Official/) • [💬 Discord](https://discord.gg/Mizukage-Official) • [🐛 Report Bug](../../issues)
 
 </div>
 
@@ -19,21 +19,7 @@
 Paste kode ini di executor kamu:
 
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NAMA_KAMU/mizukage/main/loader.lua"))()
-```
-
----
-
-## 📁 Struktur File
-
-```
-mizukage/
-├── loader.lua          ← Loader utama (yang dieksekusi user)
-├── README.md
-├── scripts/
-│   └── main.lua        ← Script hub utama kamu
-└── docs/
-    └── index.html      ← Dokumentasi (GitHub Pages)
+loadstring(game:HttpGet("[https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/loader.lua)"))()
 ```
 
 ---
@@ -50,18 +36,6 @@ mizukage/
 
 ---
 
-## ⚙️ Konfigurasi
-
-Edit variabel berikut di `loader.lua`:
-
-| Variabel | Default | Keterangan |
-|---|---|---|
-| `ACCENT` | `Color3.fromRGB(0,255,255)` | Warna cyan utama |
-| `ACCENT2` | `Color3.fromRGB(100,80,255)` | Warna purple gradient |
-| `MAIN_SCRIPT_URL` | *(kosong)* | **Wajib diisi** — URL raw script utama |
-
----
-
 ## 🛡️ Executor yang Didukung
 
 | Executor | Platform | Status |
@@ -71,17 +45,6 @@ Edit variabel berikut di `loader.lua`:
 | Delta | Android | ✅ Supported |
 | Hydrogen | iOS / Android | ✅ Supported |
 | Arceus X | Android | ⚠️ Partial |
-
----
-
-## 🚀 Deploy Dokumentasi
-
-1. Pergi ke **Settings → Pages**
-2. Source: **Deploy from branch** → branch `main` → folder `/docs`
-3. Save → tunggu ~1 menit
-4. Live di: `https://mizukageofficial.mintlify.app/`
-
----
 
 <div align="center">
 Made with 💙 by Mizukage Dev Team
