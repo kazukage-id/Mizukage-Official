@@ -21,6 +21,11 @@ local ValidGames = {
         Name = "T R O L L G E",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts,assets/TROLLGE.lua"
     },
+
+    [130342654546662] = {
+        Name = "Sambung Kata",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sambung%20kata.lua"
+    },
 }
 
 -- GAME DENGAN PLACE ID BELUM DIKETAHUI (HANYA UNTUK TELEPORT MANUAL)
@@ -69,13 +74,7 @@ local PendingGames = {
         Name = "Poop Game",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/poopgame.lua",
         PlaceId = nil
-    },
-    {
-        Name = "Sambung Kata",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sambung%20kata.lua",
-        PlaceId = nil
-    },
-    {
+    },{
         Name = "Sawah Indo",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sawah%20indo.lua",
         PlaceId = nil
