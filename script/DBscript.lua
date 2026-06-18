@@ -100,6 +100,11 @@ local PendingGames = {
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/kamar%20jenazah.lua",
         PlaceId = 122093998639862
     },
+    {
+        Name = "Penjaga Makam",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/penjaga-makam.lua",
+        PlaceId = 133181691852151
+    },
 }
 
 return {
