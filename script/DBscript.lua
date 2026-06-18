@@ -16,6 +16,11 @@ local ValidGames = {
         Name = "Blox Fruits - World 3",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/BF.lua"
     },
+
+    [12377995562] = {
+        Name = "T R O L L G E",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts,assets/TROLLGE.lua"
+    },
 }
 
 -- GAME DENGAN PLACE ID BELUM DIKETAHUI (HANYA UNTUK TELEPORT MANUAL)
