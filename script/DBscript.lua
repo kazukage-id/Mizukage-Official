@@ -95,6 +95,11 @@ local PendingGames = {
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/sell%20lemon.lua",
         PlaceId = nil
     },
+    {
+        Name = "Kamar Jenazah",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/kamar%20jenazah.lua",
+        PlaceId = nil
+    },
 }
 
 return {
