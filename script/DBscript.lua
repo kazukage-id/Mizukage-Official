@@ -26,6 +26,11 @@ local ValidGames = {
         Name = "Sambung Kata",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sambung%20kata.lua"
     },
+
+    [86096929771195] = {
+        Name = "Indo Beach",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Indobeach.lua"
+    },
 }
 
 -- GAME DENGAN PLACE ID BELUM DIKETAHUI (HANYA UNTUK TELEPORT MANUAL)
@@ -59,13 +64,7 @@ local PendingGames = {
         Name = "Flick",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/flick.lua",
         PlaceId = nil
-    },
-    {
-        Name = "Indo Beach",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Indobeach.lua",
-        PlaceId = nil
-    },
-    {
+    },{
         Name = "Murder Mystery 2",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/MM2.lua",
         PlaceId = nil
