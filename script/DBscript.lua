@@ -36,6 +36,11 @@ local ValidGames = {
         Name = "Trident  Survival",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Trident_Survival.lua"
     },
+
+    [105423512432229] = {
+        Name = "8  Bola  X",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/8-Bola_X.lua"
+    },
 }
 
 -- GAME DENGAN PLACE ID BELUM DIKETAHUI (HANYA UNTUK TELEPORT MANUAL)
