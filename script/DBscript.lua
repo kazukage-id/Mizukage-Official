@@ -46,6 +46,11 @@ local ValidGames = {
         Name = "F I S H I N G  C H E F",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FISHING_CHEF.lua"
     },
+
+    [97598239454123] = {
+        Name = "G A G2",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/GAG2.lua"
+    },
 }
 
 -- GAME DENGAN PLACE ID BELUM DIKETAHUI (HANYA UNTUK TELEPORT MANUAL)
