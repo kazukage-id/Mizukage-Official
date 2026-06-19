@@ -128,6 +128,12 @@ local PendingGames = {
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/penjaga-makam.lua",
         PlaceId = 133181691852151
     },
+
+    {
+        Name = "nametag",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/nametag.lua",
+        PlaceId = nil
+    },
 }
 
 return {
