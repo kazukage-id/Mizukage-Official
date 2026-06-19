@@ -44,7 +44,7 @@ local ValidGames = {
 
     [88599461076137] = {
         Name = "F I S H I N G  C H E F",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FISHING_CHEF.lua"
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FISHING%20CHEF.lua"
     },
 
     [97598239454123] = {
