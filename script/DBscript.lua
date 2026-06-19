@@ -51,6 +51,11 @@ local ValidGames = {
         Name = "G A G2",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/GAG2.lua"
     },
+
+    [107646426076756] = {
+        Name = "Build a ring farm",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Build_a_ring_farm.lua"
+    },
 }
 
 -- GAME DENGAN PLACE ID BELUM DIKETAHUI (HANYA UNTUK TELEPORT MANUAL)
