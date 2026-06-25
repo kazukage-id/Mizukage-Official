@@ -49,11 +49,7 @@ local ValidGames = {
         Name = "Build a ring farm",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Build_a_ring_farm.lua"
     },
-    [88599461076137] = {
-        Name = "Fishing Chef by Team Mizu",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FishingChef_byTeamMizu.lua"
-    },
-}
+    [88599461076137] =}
 
 -- GAME DENGAN PLACE ID BELUM DIKETAHUI (HANYA UNTUK TELEPORT MANUAL)
 local PendingGames = {
