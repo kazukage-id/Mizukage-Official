@@ -40,14 +40,7 @@ local ValidGames = {
     [105423512432229] = {
         Name = "8  Bola  X",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/8-Bola_X.lua"
-    },
-
-    [88599461076137] = {
-        Name = "F I S H I N G  C H E F",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FISHING%20CHEF.lua"
-    },
-
-    [97598239454123] = {
+    },[97598239454123] = {
         Name = "G A G2",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/GAG2.lua"
     },
@@ -55,6 +48,11 @@ local ValidGames = {
     [107646426076756] = {
         Name = "Build a ring farm",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Build_a_ring_farm.lua"
+    },
+
+    [88599461076137] = {
+        Name = "sipahub teammizu autofish",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/sipahub_teammizu_autofish.lua"
     },
 }
 
