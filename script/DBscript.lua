@@ -1,6 +1,7 @@
 --========================================================================
--- MIZUKAGE OFFICIAL DATABASE - GAMES LIST (LENGKAP)
+-- MIZUKAGE OFFICIAL DATABASE - GAMES LIST (AUTO-GENERATED v4.0)
 --========================================================================
+
 
 -- GAME DENGAN PLACE ID VALID (AUTO DETECT)
 local ValidGames = {
@@ -16,42 +17,37 @@ local ValidGames = {
         Name = "Blox Fruits - World 3",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/BF.lua"
     },
-
     [12377995562] = {
         Name = "T R O L L G E",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts,assets/TROLLGE.lua"
     },
-
-    [130342654546662] = {
-        Name = "Sambung Kata",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sambung%20kata.lua"
-    },
-
-    [86096929771195] = {
-        Name = "Indo Beach",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Indobeach.lua"
-    },
-
     [13253735473] = {
         Name = "Trident  Survival",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Trident_Survival.lua"
     },
-
-    [105423512432229] = {
-        Name = "8  Bola  X",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/8-Bola_X.lua"
-    },[97598239454123] = {
+    [86096929771195] = {
+        Name = "Indo Beach",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Indobeach.lua"
+    },
+    [88599461076137] = {
+        Name = "Fishing Chef V2  Team Mizu",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FishingChefV2_TeamMizu.lua"
+    },
+    [97598239454123] = {
         Name = "G A G2",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/GAG2.lua"
     },
-
+    [105423512432229] = {
+        Name = "8  Bola  X",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/8-Bola_X.lua"
+    },
     [107646426076756] = {
         Name = "Build a ring farm",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Build_a_ring_farm.lua"
     },
-    [88599461076137] = {
-        Name = "F I S H I N G  C H E F",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FISHING_CHEF.lua"
+    [130342654546662] = {
+        Name = "Sambung Kata",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sambung%20kata.lua"
     },
 }
 
@@ -86,16 +82,33 @@ local PendingGames = {
         Name = "Flick",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/flick.lua",
         PlaceId = nil
-    },{
+    },
+    {
+        Name = "Kamar Jenazah",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/kamar%20jenazah.lua",
+        PlaceId = 122093998639862
+    },
+    {
         Name = "Murder Mystery 2",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/MM2.lua",
         PlaceId = nil
     },
     {
+        Name = "nametag",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/nametag.lua",
+        PlaceId = nil
+    },
+    {
+        Name = "Penjaga Makam",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/penjaga-makam.lua",
+        PlaceId = 133181691852151
+    },
+    {
         Name = "Poop Game",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/poopgame.lua",
         PlaceId = nil
-    },{
+    },
+    {
         Name = "Sawah Indo",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sawah%20indo.lua",
         PlaceId = nil
@@ -106,6 +119,11 @@ local PendingGames = {
         PlaceId = nil
     },
     {
+        Name = "Sell Lemon",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/sell%20lemon.lua",
+        PlaceId = nil
+    },
+    {
         Name = "Tebak Yuk",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Tebakyuk.lua",
         PlaceId = nil
@@ -113,27 +131,6 @@ local PendingGames = {
     {
         Name = "Violence District",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/VD.lua",
-        PlaceId = nil
-    },
-    {
-        Name = "Sell Lemon",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/sell%20lemon.lua",
-        PlaceId = nil
-    },
-    {
-        Name = "Kamar Jenazah",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/kamar%20jenazah.lua",
-        PlaceId = 122093998639862
-    },
-    {
-        Name = "Penjaga Makam",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/penjaga-makam.lua",
-        PlaceId = 133181691852151
-    },
-
-    {
-        Name = "nametag",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/nametag.lua",
         PlaceId = nil
     },
 }
