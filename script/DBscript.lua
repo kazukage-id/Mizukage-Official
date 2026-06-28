@@ -30,7 +30,7 @@ local ValidGames = {
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Indobeach.lua"
     },
     [88599461076137] = {
-        Name = "Fishing Chef V2  Team Mizu",
+        Name = "Fishing island",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FishingChefV2_TeamMizu.lua"
     },
     [97598239454123] = {
