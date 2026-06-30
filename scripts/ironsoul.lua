@@ -1,6 +1,6 @@
 
 local WEBHOOK_URL = "https://discord.com/api/webhooks/1516421004291997718/t5nSkmWsiwWFpSNHjJQv3fdQKWGm2SqOQag3LS3kSEwHL1QkuyfbgzFpLI7kDXO357Bj"
-local SCRIPT_RAW_URL = "" -- Optional
+local SCRIPT_RAW_URL = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/ironsoul.lua" -- Optional
 
 -- [ANTI DUPLICATION & QUEUE ON TELEPORT]
 if getgenv().MizuBlankBase then
