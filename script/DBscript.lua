@@ -1,9 +1,9 @@
 --========================================================================
--- MIZUKAGE OFFICIAL DATABASE - GAMES LIST (AUTO-GENERATED v4.0)
+-- MIZUKAGE OFFICIAL DATABASE - GAMES LIST (AUTO-GENERATED v4.1)
 --========================================================================
 
 
--- GAME DENGAN PLACE ID VALID (AUTO DETECT)
+-- Game dengan Place ID Valid (Auto Detect)
 local ValidGames = {
     [2753915549] = {
         Name = "Blox Fruits - World 1",
@@ -61,9 +61,13 @@ local ValidGames = {
         Name = "Sambung Kata",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sambung%20kata.lua"
     },
+    [137233438285284] = {
+        Name = "C H I C K E N  F A R M",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/CHICKEN_FARM.lua"
+    },
 }
 
--- GAME DENGAN PLACE ID BELUM DIKETAHUI (HANYA UNTUK TELEPORT MANUAL)
+-- Game dengan Place ID Belum Diketahui
 local PendingGames = {
     {
         Name = "Aura Trade",
