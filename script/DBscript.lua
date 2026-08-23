@@ -1,5 +1,5 @@
 --========================================================================
--- MIZUKAGE OFFICIAL DATABASE - GAMES LIST (AUTO-GENERATED v4.1)
+-- MIZUKAGE OFFICIAL DATABASE - GAMES LIST (AUTO-GENERATED v4.2)
 --========================================================================
 
 
@@ -52,10 +52,6 @@ local ValidGames = {
     [107646426076756] = {
         Name = "Build a ring farm",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Build_a_ring_farm.lua"
-    },
-    [117533937949084] = {
-        Name = "ironsoul",
-        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/ironsoul.lua"
     },
     [130342654546662] = {
         Name = "Sambung Kata",
