@@ -61,6 +61,10 @@ local ValidGames = {
         Name = "ironsoul",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/ironsoul.lua"
     },
+    [118517641508250] = {
+        Name = "M O U N T  S O R E Y A",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/MOUNT_SOREYA.lua"
+    },
     [130342654546662] = {
         Name = "Sambung Kata",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/Sambung%20kata.lua"
