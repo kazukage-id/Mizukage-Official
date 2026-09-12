@@ -25,6 +25,10 @@ local ValidGames = {
         Name = "Trident  Survival",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Trident_Survival.lua"
     },
+    [83717725495693] = {
+        Name = "magnet fishing",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/magnet_fishing.lua"
+    },
     [85697954565286] = {
         Name = "Fish Indo",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FishIndo.lua"
