@@ -1,5 +1,5 @@
 --========================================================================
--- MIZUKAGE OFFICIAL DATABASE - GAMES LIST (AUTO-GENERATED v4.2)
+-- MIZUKAGE OFFICIAL DATABASE - GAMES LIST (AUTO-GENERATED v5.0)
 --========================================================================
 
 
@@ -56,6 +56,10 @@ local ValidGames = {
     [97598239454123] = {
         Name = "G A G2",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/GAG2.lua"
+    },
+    [98452648064999] = {
+        Name = "Fry  A  Fish",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Fry_A_Fish.lua"
     },
     [105423512432229] = {
         Name = "8  Bola  X",
@@ -171,7 +175,4 @@ local PendingGames = {
     },
 }
 
-return {
-    Valid = ValidGames,
-    Pending = PendingGames
-}
+return { Valid = ValidGames, Pending = PendingGames }
