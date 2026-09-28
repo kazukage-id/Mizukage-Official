@@ -73,6 +73,10 @@ local ValidGames = {
         Name = "Build a ring farm",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Build_a_ring_farm.lua"
     },
+    [117533937949084] = {
+        Name = "Iron Soul",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Iron_Soul.lua"
+    },
     [118517641508250] = {
         Name = "M O U N T  S O R E Y A",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/MOUNT_SOREYA.lua"
