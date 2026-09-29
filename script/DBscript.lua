@@ -25,6 +25,10 @@ local ValidGames = {
         Name = "Trident  Survival",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Trident_Survival.lua"
     },
+    [76503495566299] = {
+        Name = "Steal a chiken",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Steal_a_chiken.lua"
+    },
     [77160678446964] = {
         Name = "S C H O O L  W A R  V2    Crows  Zero  Oya",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/SCHOOL_WAR_V2_-_Crows_Zero_Oya.lua"
