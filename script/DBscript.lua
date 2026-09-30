@@ -85,6 +85,10 @@ local ValidGames = {
         Name = "Swing For Egg",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Swing_For_Egg.lua"
     },
+    [116205955936812] = {
+        Name = "Egg Collector",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Egg_Collector.lua"
+    },
     [117533937949084] = {
         Name = "Iron Soul",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Iron_Soul.lua"
