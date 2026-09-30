@@ -65,6 +65,10 @@ local ValidGames = {
         Name = "Fry  A  Fish",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Fry_A_Fish.lua"
     },
+    [101999883467300] = {
+        Name = "Piano Tiles",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Piano_Tiles.lua"
+    },
     [104412011340255] = {
         Name = "M O U N T A T L A S",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/MOUNT_ATLAS.lua"
