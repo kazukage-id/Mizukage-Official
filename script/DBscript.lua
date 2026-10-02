@@ -57,6 +57,10 @@ local ValidGames = {
         Name = "Fishing island",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FishingChefV2_TeamMizu.lua"
     },
+    [93938699582360] = {
+        Name = "mount salfara",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/mount_salfara.lua"
+    },
     [95602441922731] = {
         Name = "Fishing  Island",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/Fishing_Island.lua"
