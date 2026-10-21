@@ -105,6 +105,10 @@ local ValidGames = {
         Name = "M O U N T  S O R E Y A",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/MOUNT_SOREYA.lua"
     },
+    [118805555015549] = {
+        Name = "Loot To Forge",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/LootToForge.lua"
+    },
     [119409763193569] = {
         Name = "D I G  I N T R O  S E C R E T",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/DIG_INTRO_SECRET.lua"
