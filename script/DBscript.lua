@@ -5,6 +5,10 @@
 
 -- Game dengan Place ID Valid (Auto Detect)
 local ValidGames = {
+    [893973440] = {
+        Name = "Flee The Facility",
+        Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/scripts/FleeTheFacility.lua"
+    },
     [2753915549] = {
         Name = "Blox Fruits - World 1",
         Script = "https://raw.githubusercontent.com/kazukage-id/Mizukage-Official/refs/heads/main/%7Bscripts%2Cassets%7D/BF.lua"
